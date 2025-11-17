@@ -18,3 +18,15 @@ node_modules/
 
 *_.md
 _*.md
+
+# Cache
+.cache/
+dist/
+build/
+.tmp/
+.out/
+
+
+#Claude
+.claude/
+Claude*
