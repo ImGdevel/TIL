@@ -4,6 +4,12 @@
 
 `TIL`이 공부한 내용을 빠르게 적재하는 곳이라면, 이곳은 나중에 다시 읽고 다른 사람도 이해할 수 있게 다듬은 지식 문서입니다.
 
+## 자료구조 / 알고리즘
+
+- [자료구조](./자료구조/README.md)
+- [알고리즘](./알고리즘/README.md)
+
+<br />
 <br />
 
 ---
@@ -74,6 +80,7 @@ JPA 매핑, 조회 전략, QueryDSL, DB 인덱스와 실행 계획, MySQL/Postgr
 - [인덱스 설계와 실행 계획](https://github.com/ImGdevel/TIL/wiki/database-indexes)
 - [MySQL과 PostgreSQL](https://github.com/ImGdevel/TIL/wiki/mysql-vs-postgresql)
 - [DB 커넥션과 트랜잭션 관리](https://github.com/ImGdevel/TIL/wiki/database-connection-and-transaction-management)
+- [JPA 트랜잭션 고급 전략](./JPA/Transaction-Advanced/README.md)
 
 <br />
 
