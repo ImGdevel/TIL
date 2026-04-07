@@ -8,6 +8,7 @@
 
 - [자료구조](./자료구조/README.md)
 - [알고리즘](./알고리즘/README.md)
+- [CS](./CS/README.md)
 
 <br />
 <br />
