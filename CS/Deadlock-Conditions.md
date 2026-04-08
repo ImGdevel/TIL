@@ -1,0 +1,37 @@
+# [CS/OS] Deadlock 조건
+
+## 한 줄 요약
+
+> <u>`Deadlock`은 서로가 가진 자원을 기다리면서 영원히 진행하지 못하는 상태이고, 4가지 조건이 동시에 성립할 때 발생한다.</u>
+
+대표적으로 락을 잡은 상태에서 다른 락을 기다리는 형태로 나타난다.
+
+핵심 키워드: `mutual exclusion`, `hold and wait`, `no preemption`, `circular wait`
+
+<br />
+<br />
+
+---
+
+## 1. 4가지 필요 조건 (Coffman)
+
+| 조건 | 의미 |
+| --- | --- |
+| Mutual Exclusion | 자원을 동시에 공유할 수 없다 |
+| Hold and Wait | 자원을 가진 채로 다른 자원을 기다린다 |
+| No Preemption | 강제로 빼앗을 수 없다 |
+| Circular Wait | 대기 사이클이 존재한다 |
+
+<br />
+<br />
+
+---
+
+## 2. 예방/회피 핵심
+
+> <u>4가지 중 하나라도 깨면 deadlock을 막을 수 있다.</u>
+
+- 자원 순서 부여로 `circular wait` 제거
+- 타임아웃/재시도로 `hold and wait` 완화
+- 선점 가능 자원 설계로 `no preemption` 완화
+
