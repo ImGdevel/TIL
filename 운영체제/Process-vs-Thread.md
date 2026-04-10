@@ -1,4 +1,4 @@
-# [CS/OS] Process vs Thread
+# [운영체제] Process vs Thread
 
 ## 한 줄 요약
 
@@ -57,4 +57,3 @@
 
 - 스레드는 공유 자원 때문에 `race condition`이 생길 수 있다.
 - 프로세스는 격리 때문에 안정성이 좋지만, 통신 비용이 든다.
-

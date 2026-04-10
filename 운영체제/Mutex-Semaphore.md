@@ -1,4 +1,4 @@
-# [CS/OS] Mutex / Semaphore
+# [운영체제] Mutex / Semaphore
 
 ## 한 줄 요약
 
@@ -41,4 +41,3 @@
 
 - `Semaphore`는 풀을 관리하는 문제(예: 커넥션 풀)에 자주 나온다.
 - 잘못 쓰면 `deadlock`, `starvation` 같은 문제가 생긴다.
-

@@ -1,4 +1,4 @@
-# [CS/OS] Deadlock 조건
+# [운영체제] Deadlock 조건
 
 ## 한 줄 요약
 
@@ -34,4 +34,3 @@
 - 자원 순서 부여로 `circular wait` 제거
 - 타임아웃/재시도로 `hold and wait` 완화
 - 선점 가능 자원 설계로 `no preemption` 완화
-

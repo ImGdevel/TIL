@@ -8,7 +8,9 @@
 
 - [자료구조](./자료구조/README.md)
 - [알고리즘](./알고리즘/README.md)
-- [CS](./CS/README.md)
+- [운영체제](./운영체제/README.md)
+- [네트워크](./네트워크/README.md)
+- [객체지향](./객체지향/README.md)
 
 <br />
 <br />
