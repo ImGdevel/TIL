@@ -1,11 +1,14 @@
 # [네트워크]
 
 - [TCP vs UDP](./TCP-vs-UDP.md)
+- [UDP 최신성(Latestness)](./UDP-Latestness.md)
 - [TCP 3-way handshake](./TCP-3-way-handshake.md)
+- [TCP 4-way close](./TCP-4-way-close.md)
 - [TIME_WAIT 존재 이유](./TIME_WAIT.md)
 - [TCP 신뢰성 보장 메커니즘](./TCP-Reliability-Mechanisms.md)
 - [Flow Control vs Congestion Control](./FlowControl-vs-CongestionControl.md)
 - [HTTP 요청/응답 구조](./HTTP-Request-Response.md)
+- [HTTP Stateless](./HTTP-Stateless.md)
 - [HTTP/1.1 vs HTTP/2, Keep-Alive](./HTTP1.1-vs-HTTP2-KeepAlive.md)
 - [OSI 7 Layer / TCP/IP 계층](./OSI-TCPIP-Layers.md)
 - [REST](./REST.md)
