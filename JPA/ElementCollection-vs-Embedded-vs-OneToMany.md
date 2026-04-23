@@ -1,5 +1,9 @@
 # `@ElementCollection` vs `@Embedded` vs `@OneToMany`
 
+> 연결된 정리본:
+> - [엔티티와 매핑 설계](../../../TIL.wiki/jpa-entity-and-mapping-design.md)
+
+
 JPA에서 값 타입/엔티티를 어떻게 매핑하느냐에 따라 설계와 성능, 유지보수성이 크게 달라진다.  
 여기서는 세 가지 대표 매핑인 `@ElementCollection`, `@Embedded`, `@OneToMany`를 비교한다.
 

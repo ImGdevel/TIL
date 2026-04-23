@@ -1,5 +1,9 @@
 # Redis Stream으로 이벤트 로그 다루기
 
+> 연결된 정리본:
+> - [메시징 패턴: MQ, Pub/Sub, Stream, Kafka](../../../TIL.wiki/messaging-patterns-pubsub-stream-kafka.md)
+
+
 > “Pub/Sub으로는 아쉬웠던 내구성과 재처리를, Redis 안에서 어느 정도까지 가져갈 수 있을까?”
 
 ## 0. 이 글을 쓰게 된 계기

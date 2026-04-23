@@ -1,5 +1,9 @@
 # Promise: 콜백 지옥에서 벗어나기
 
+> 연결된 정리본:
+> - [Promise](../../../TIL.wiki/javascript-promise.md)
+
+
 ## 들어가며
 
 "이 데이터가 언제 올지 모르는데, 어떻게 처리하지?"

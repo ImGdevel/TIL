@@ -1,5 +1,9 @@
 # WebSocket과 SSE
 
+> 연결된 정리본:
+> - [WebSocket과 SSE](../../../TIL.wiki/websocket-and-sse.md)
+
+
 > 실시간 양방향 통신 vs 서버 푸시: 언제 무엇을 선택할 것인가
 
 ## 들어가며

@@ -1,5 +1,10 @@
 # 효율적인 JPA 조회 전략
 
+> 연결된 정리본:
+> - [조회와 캐시 전략](../../../TIL.wiki/jpa-query-and-cache-strategies.md)
+> - [Fetch Join, EntityGraph, Batch Size](../../../TIL.wiki/fetch-join-vs-entitygraph-vs-batch-size.md)
+
+
 > Devon의 N+1 문제 해결과 성능 최적화 원칙
 
 ## 들어가며

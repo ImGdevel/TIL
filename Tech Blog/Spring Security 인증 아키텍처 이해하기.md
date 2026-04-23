@@ -1,5 +1,9 @@
 # Spring Security 인증 아키텍처, 한 번은 끝까지 따라가 보기
 
+> 연결된 정리본:
+> - [인증 아키텍처](../../../TIL.wiki/spring-security-authentication-architecture.md)
+
+
 > “인증이 실제로 어떻게 흘러가는지”를 구조 관점에서 정리해 본다.
 
 ## 들어가며

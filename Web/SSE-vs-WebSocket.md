@@ -1,5 +1,9 @@
 # SSE vs WebSocket 차이 정리
 
+> 연결된 정리본:
+> - [WebSocket과 SSE](../../../TIL.wiki/websocket-and-sse.md)
+
+
 > “실시간 통신을 해야 하는데, SSE로 할까 WebSocket으로 할까?”  
 > 이 문서는 두 기술의 개념과 특징, 언제 어떤 것을 선택할지 정리한다.
 

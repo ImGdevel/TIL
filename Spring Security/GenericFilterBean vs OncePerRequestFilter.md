@@ -1,5 +1,10 @@
 # GenericFilterBean vs OncePerRequestFilter 선택 전략
 
+> 연결된 정리본:
+> - [필터 베이스 클래스 선택](../../../TIL.wiki/spring-filter-base-classes.md)
+> - [커스텀 필터 설계](../../../TIL.wiki/spring-security-custom-filter-design.md)
+
+
 > 필터 중복 실행 방지와 올바른 필터 베이스 클래스 선택 가이드
 
 ## 들어가며

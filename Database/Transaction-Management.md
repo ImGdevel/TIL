@@ -1,5 +1,9 @@
 # 트랜잭션 관리 방법 정리 (JPA/Spring 중심)
 
+> 연결된 정리본:
+> - [DB 커넥션과 트랜잭션 관리](../../../TIL.wiki/database-connection-and-transaction-management.md)
+
+
 > “트랜잭션은 꼭 쓰라면서, 정작 언제·어디에 써야 하는지는 잘 안 알려준다.”  
 > 이 문서는 **트랜잭션 개념 → Spring에서 관리하는 방법 → 실무에서 자주 하는 실수와 패턴** 순으로 정리한다.
 

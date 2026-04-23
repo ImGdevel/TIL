@@ -1,5 +1,9 @@
 # Redis Pub/Sub로 서비스 간 이벤트 다루기
 
+> 연결된 정리본:
+> - [메시징 패턴: MQ, Pub/Sub, Stream, Kafka](../../../TIL.wiki/messaging-patterns-pubsub-stream-kafka.md)
+
+
 > “Kafka를 쓰기엔 무겁고, 그냥 동기 호출만 하기엔 아쉬울 때.”
 
 ## 0. 이 글을 쓰게 된 계기

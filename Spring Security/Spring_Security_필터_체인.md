@@ -1,5 +1,12 @@
 # Spring Security: 필터 체인의 동작 원리와 커스터마이징
 
+> 연결된 정리본:
+> - [Servlet 아키텍처](../../../TIL.wiki/spring-security-servlet-architecture.md)
+> - [커스텀 필터 설계](../../../TIL.wiki/spring-security-custom-filter-design.md)
+> - [JWT 필터 배치](../../../TIL.wiki/spring-security-jwt-filter-positioning.md)
+> - [Filter Chain 예외 처리](../../../TIL.wiki/spring-security-filter-chain-exception-handling.md)
+
+
 > Spring Security의 필터 체인 구조를 이해하고, 실무에서 커스텀 필터를 안전하게 추가하는 방법을 다룹니다.
 
 ---

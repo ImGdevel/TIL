@@ -1,5 +1,9 @@
 # Spring Security Filter Chain 예외 처리 전략
 
+> 연결된 정리본:
+> - [Filter Chain 예외 처리](../../../TIL.wiki/spring-security-filter-chain-exception-handling.md)
+
+
 > 인증/인가 실패와 예외를 제대로 다루는 방법
 
 ## 들어가며

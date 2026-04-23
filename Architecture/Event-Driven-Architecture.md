@@ -1,5 +1,9 @@
 # 이벤트 드리븐 아키텍처(Event-Driven Architecture) 정리
 
+> 연결된 정리본:
+> - [이벤트 드리븐 아키텍처](../../../TIL.wiki/event-driven-architecture.md)
+
+
 > “요청/응답으로는 점점 버티기 어려워진다. 그래서 ‘이벤트’로 시스템을 설계하기 시작했다.”
 
 ---

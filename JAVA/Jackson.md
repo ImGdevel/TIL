@@ -1,5 +1,9 @@
 # Jackson으로 시작하는 Java JSON 처리
 
+> 연결된 정리본:
+> - [Jackson과 JSON 처리](../../../TIL.wiki/jackson-json-processing.md)
+
+
 ## 들어가며
 
 Java로 웹 개발을 하다 보면 JSON을 다룰 일이 정말 많습니다. REST API를 만들 때, 외부 API를 호출할 때, 설정 파일을 읽을 때... 이런 상황에서 가장 많이 사용되는 라이브러리가 바로 **Jackson**입니다.

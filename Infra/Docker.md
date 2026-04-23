@@ -1,5 +1,9 @@
 # Docker 정리
 
+> 연결된 정리본:
+> - [Docker 기초](../../../TIL.wiki/docker-basics-images-containers-volumes.md)
+
+
 > “내 PC에서는 되는데…?”를 줄이기 위해, **동일한 실행 환경을 컨테이너로 패키징**해 공유하는 기술이 Docker다.
 
 ---

@@ -1,5 +1,9 @@
 # CSRF 공격과 방어 전략
 
+> 연결된 정리본:
+> - [CSRF](../../../TIL.wiki/spring-security-csrf.md)
+
+
 > 웹 보안의 핵심 취약점과 Spring Security 기반 방어 메커니즘
 
 ## 들어가며

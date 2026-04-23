@@ -1,5 +1,10 @@
 # Event Loop로 시작하는 JavaScript 비동기 처리
 
+> 연결된 정리본:
+> - [이벤트 루프](../../../TIL.wiki/javascript-event-loop.md)
+> - [비동기 기초](../../../TIL.wiki/javascript-async-fundamentals.md)
+
+
 ## 들어가며
 
 JavaScript로 웹사이트를 사용할 때를 떠올려볼까요? 배경음악이 나오면서 화면에는 애니메이션이 움직이고, 동시에 스크롤을 내릴 수도 있고 버튼을 클릭할 수도 있습니다. 심지어 서버에서 데이터를 가져오는 동안에도 화면이 멈추지 않죠.

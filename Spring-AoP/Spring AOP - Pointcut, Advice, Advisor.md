@@ -1,5 +1,9 @@
 # Spring AOP - Pointcut, Advice, Advisor
 
+> 연결된 정리본:
+> - [Spring AOP 핵심 개념](../../../TIL.wiki/spring-aop-pointcut-advice-advisor.md)
+
+
 ## 📌 개요
 
 Spring AOP(Aspect-Oriented Programming)는 **횡단 관심사(Cross-Cutting Concerns)**를 효과적으로 분리하고 관리하기 위한 프로그래밍 패러다임입니다. Spring AOP의 핵심은 다음 3가지 요소로 구성됩니다:

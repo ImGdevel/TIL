@@ -1,5 +1,9 @@
 # JPA One-to-Many 관계 설계 전략
 
+> 연결된 정리본:
+> - [엔티티와 매핑 설계](../../../TIL.wiki/jpa-entity-and-mapping-design.md)
+
+
 > Devon의 양방향 관계 최소화와 도메인 분리 원칙
 
 ## 들어가며

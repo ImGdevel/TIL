@@ -1,5 +1,9 @@
 # DB Connection Management 정리
 
+> 연결된 정리본:
+> - [DB 커넥션과 트랜잭션 관리](../../../TIL.wiki/database-connection-and-transaction-management.md)
+
+
 > “DB 커넥션은 ‘비싼 리소스’라서, 잘 관리하지 않으면 성능과 안정성이 같이 무너진다.”
 
 ---

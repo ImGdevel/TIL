@@ -1,5 +1,10 @@
 # Spring Security와 CORS, 그리고 필터 체인으로 원인 추적하기
 
+> 연결된 정리본:
+> - [CORS 원인 추적](../../../TIL.wiki/spring-security-cors-troubleshooting.md)
+> - [CORS](../../../TIL.wiki/spring-security-cors.md)
+
+
 > “분명 CORS 설정을 했는데도, 왜 여전히 CORS 에러가 날까?”  
 > 이 글은 **Spring Security 필터 체인**을 따라가며 CORS 문제가 어디서 터지는지 추적해 보는 기록이다.
 

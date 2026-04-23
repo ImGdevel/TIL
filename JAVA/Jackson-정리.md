@@ -1,5 +1,9 @@
 # Jackson 정리
 
+> 연결된 정리본:
+> - [Jackson과 JSON 처리](../../../TIL.wiki/jackson-json-processing.md)
+
+
 ## 1. Jackson이란?
 
 - Java 진영에서 가장 널리 쓰이는 JSON 직렬화/역직렬화 라이브러리

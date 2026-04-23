@@ -1,5 +1,9 @@
 # Redis, 특징과 장단점을 한 번에 정리해 보기
 
+> 연결된 정리본:
+> - [Redis 개요와 캐싱](../../../TIL.wiki/redis-overview-and-caching.md)
+
+
 > “다들 붙이라고 해서 썼던 Redis를, 이제는 설계 관점에서 다시 보기.”
 
 ## 0. 이 글을 쓰게 된 계기

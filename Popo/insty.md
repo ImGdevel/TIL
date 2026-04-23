@@ -1,5 +1,10 @@
 # Insty Backend Web - 포트폴리오
 
+> 연결된 정리본:
+> - [Insty 프로젝트 개요](../../../Portfolio/insty-project-overview.md)
+> - [지원서용 프로젝트 요약](../../../Portfolio/nexon-application-project-summary.md)
+
+
 ### 본 저장소는 공동 작업 프로젝트에서 **개인 기여분만 추출**한 포트폴리오용 코드베이스입니다.
 
 > < 전체 프로젝트 Ropo ><br>
@@ -85,7 +90,7 @@ insty-backend-web/
 #### 핵심 성능 최적화 구현
 
 **1. QueryDSL DTO Projection으로 N+1 문제 해결**
-> 📋 **구현 코드**: [`CommunityQuestionQueryRepositoryImpl.java:30-56`](insty-domain/src/main/java/insty/domain/community/persistence/CommunityQuestionQueryRepositoryImpl.java)
+> 📋 **구현 코드**: `insty-domain/src/main/java/insty/domain/community/persistence/CommunityQuestionQueryRepositoryImpl.java:30-56`
 
 **🚨 문제 상황**
 - 엔티티 조회 후 DTO 변환 시 연관된 User 엔티티로 인한 N+1 쿼리 발생
@@ -131,7 +136,7 @@ public List<CommunityQuestionSearchInfo> searchQuestions(PaginationReq paginatio
 <br>
 
 **2. 답변 개수 조회 N+1 문제 해결**
-> 📋 **구현 코드**: [`CommunityQuestionQueryRepositoryImpl.java:69-95`](insty-domain/src/main/java/insty/domain/community/persistence/CommunityQuestionQueryRepositoryImpl.java)
+> 📋 **구현 코드**: `insty-domain/src/main/java/insty/domain/community/persistence/CommunityQuestionQueryRepositoryImpl.java:69-95`
 
 **🚨 문제 상황**
 - 질문 목록 조회 시 각 질문의 답변 개수를 개별 쿼리로 조회
@@ -175,7 +180,7 @@ public Map<Long, Long> getAnswerCountsByQuestionIds(List<Long> questionIds) {
 <br>
 
 **3. 동적 검색 조건 빌더와 답변 채택 로직**
-> 📋 **구현 코드**: [`CommunityQuestionQueryRepositoryImpl.java:97-123`](insty-domain/src/main/java/insty/domain/community/persistence/CommunityQuestionQueryRepositoryImpl.java) | [`CommunityAnswerAcceptManager.java:27-50`](insty-api/src/main/java/insty/domain/community/implement/CommunityAnswerAcceptManager.java)
+> 📋 **구현 코드**: `insty-domain/src/main/java/insty/domain/community/persistence/CommunityQuestionQueryRepositoryImpl.java:97-123` | `insty-api/src/main/java/insty/domain/community/implement/CommunityAnswerAcceptManager.java:27-50`
 ```java
 // 동적 검색 - 다중 필터 조건 처리
 private BooleanExpression[] searchConditions(CommunityQuestionSearchFilter filter) {
@@ -214,7 +219,7 @@ public AcceptAnswerResultRes acceptAnswer(CommunityQuestion question, CommunityA
 <br>
 
 ### 2. 멘션 시스템 - 스팸 방지 및 메모리 최적화
-> 📋 **구현 코드**: [`MentionParser.java:18-46`](insty-api/src/main/java/insty/domain/mention/implement/MentionParser.java)
+> 📋 **구현 코드**: `insty-api/src/main/java/insty/domain/mention/implement/MentionParser.java:18-46`
 
 **🚨 문제 상황**
 - 무분별한 사용자 멘션으로 알림 폭탄 가능성
@@ -258,7 +263,7 @@ if (mentionerUser != null && mentionerUser.getId() != null &&
 <br>
 
 ### 3. 이벤트 기반 알림 시스템
-> 📋 **구현 코드**: [`MentionNotificationManager.java:24-27`](insty-api/src/main/java/insty/domain/mention/implement/MentionNotificationManager.java) | [`UserMentionNotificationHandler.java:25-27`](insty-api/src/main/java/insty/domain/notification/handler/UserMentionNotificationHandler.java)
+> 📋 **구현 코드**: `insty-api/src/main/java/insty/domain/mention/implement/MentionNotificationManager.java:24-27` | `insty-api/src/main/java/insty/domain/notification/handler/UserMentionNotificationHandler.java:25-27`
 
 **🚨 문제 상황**
 - 동기 이메일 발송으로 API 응답 시간 지연
@@ -302,7 +307,7 @@ public void onMailEventHandler(UserMentionedEvent event) {
 
 ## 📊 핵심 성과
 
-- **13개 REST API 설계** - 커뮤니티 Q&A 전체 시스템 구현 ([`CommunityController.java`](insty-api/src/main/java/insty/domain/community/controller/CommunityController.java))
+- **13개 REST API 설계** - 커뮤니티 Q&A 전체 시스템 구현 (`insty-api/src/main/java/insty/domain/community/controller/CommunityController.java`)
 - **N+1 문제 해결** - QueryDSL DTO Projection으로 엔티티 로딩 최적화
 - **배치 쿼리 최적화** - 개별 쿼리 11번 → 1번으로 90% 감소
 - **이벤트 기반 알림** - `@TransactionalEventListener` + `@Async`로 API 응답시간 1초 → 300ms

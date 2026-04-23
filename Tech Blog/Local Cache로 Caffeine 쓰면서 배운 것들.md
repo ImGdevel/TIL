@@ -1,5 +1,9 @@
 # Local Cache로 Caffeine 쓰면서 배운 것들
 
+> 연결된 정리본:
+> - [로컬 캐시와 Caffeine](../../../TIL.wiki/local-cache-with-caffeine.md)
+
+
 > “Redis 붙이기 전에, 애플리케이션 안에서 할 수 있는 캐싱부터 제대로 써보자.”
 
 ## 0. 이 글을 쓰게 된 계기

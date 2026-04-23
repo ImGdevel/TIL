@@ -1,5 +1,9 @@
 # Spring Security 아키텍처 이해하기
 
+> 연결된 정리본:
+> - [Servlet 아키텍처](../../../TIL.wiki/spring-security-servlet-architecture.md)
+
+
 > 공식 문서 기반의 Spring Security 핵심 구조 분석
 
 ## 들어가며

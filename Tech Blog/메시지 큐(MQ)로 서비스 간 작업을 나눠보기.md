@@ -1,5 +1,9 @@
 # 메시지 큐(MQ)로 서비스 간 작업을 나눠보기
 
+> 연결된 정리본:
+> - [메시징 패턴: MQ, Pub/Sub, Stream, Kafka](../../../TIL.wiki/messaging-patterns-pubsub-stream-kafka.md)
+
+
 > “요청 한 번에 너무 많은 일을 몰아넣기 시작하면, 결국 MQ를 고민하게 된다.”
 
 ## 0. 이 글을 쓰게 된 계기

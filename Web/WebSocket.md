@@ -1,5 +1,9 @@
 # WebSocket 정리 – 언제, 어떻게 써야 할까
 
+> 연결된 정리본:
+> - [WebSocket과 SSE](../../../TIL.wiki/websocket-and-sse.md)
+
+
 > “실시간 양방향 통신이 필요할 때, WebSocket을 어디까지 믿고 쓸 것인가?”
 
 ---

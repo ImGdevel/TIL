@@ -1,5 +1,9 @@
 # Redis Sorted Set(ZSET)으로 랭킹 캐싱 설계하기
 
+> 연결된 정리본:
+> - [Redis 개요와 캐싱](../../../TIL.wiki/redis-overview-and-caching.md)
+
+
 > "ZSET은 단순한 캐시가 아니다. 정렬된 상태를 유지하면서 빠르게 조회/갱신까지 가능한, 랭킹을 위해 태어난 자료구조다."
 
 ---

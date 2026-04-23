@@ -1,5 +1,9 @@
 # Spring Security Servlet 아키텍처, 한 번은 구조부터 정리해보기
 
+> 연결된 정리본:
+> - [Servlet 아키텍처](../../../TIL.wiki/spring-security-servlet-architecture.md)
+
+
 > “필터 하나 붙였을 뿐인데, 로그에는 필터가 열몇 개가 찍힌다.”
 
 ## 0. 필터 로그를 보고 멘붕이 왔던 날

@@ -1,5 +1,9 @@
 # 쓰레드 풀(Thread Pool) 관리 전략 정리
 
+> 연결된 정리본:
+> - [비동기 전략과 쓰레드 풀 관리](../../../TIL.wiki/async-strategy-and-thread-pool-management.md)
+
+
 > “동시성을 늘리려고 쓰레드를 늘렸는데, 오히려 시스템이 더 느려졌다…”
 
 ---

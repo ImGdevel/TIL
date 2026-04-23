@@ -1,5 +1,9 @@
 # 비동기(Async) 전략 정리
 
+> 연결된 정리본:
+> - [비동기 전략과 쓰레드 풀 관리](../../../TIL.wiki/async-strategy-and-thread-pool-management.md)
+
+
 > “당장 응답해야 하는 일과, 나중에 따로 처리해도 되는 일을 어떻게 나눌 것인가?”
 
 ---

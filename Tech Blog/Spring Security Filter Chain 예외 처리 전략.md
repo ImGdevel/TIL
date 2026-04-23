@@ -1,5 +1,9 @@
 # Spring Security Filter Chain 예외 처리, 한 번 제대로 잡아보기
 
+> 연결된 정리본:
+> - [Filter Chain 예외 처리](../../../TIL.wiki/spring-security-filter-chain-exception-handling.md)
+
+
 > “분명 401을 기대했는데, 브라우저는 자꾸 로그인 페이지로 튀어간다.”
 
 ## 0. @ControllerAdvice가 아무 일도 안 하던 그 날

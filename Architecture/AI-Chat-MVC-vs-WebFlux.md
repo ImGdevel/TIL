@@ -1,5 +1,9 @@
 # AI Chat 부하테스트에서 Spring MVC vs WebFlux 비교
 
+> 연결된 정리본:
+> - [AI Chat에서 MVC와 WebFlux 선택](../../../TIL.wiki/ai-chat-mvc-vs-webflux.md)
+
+
 > 주제: **AI Chat 부하테스트**  
 > 질문: “부하테스트 대회에서 AI Chat 서버를 만든다면, Spring MVC와 WebFlux 중 무엇이 더 좋은 선택인가?”
 
