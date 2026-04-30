@@ -15,7 +15,6 @@
 - [Spring Security](./Spring%20Security/README.md)
 - [Spring AOP](./Spring%20AOP/README.md)
 - [WebSocket](./WebSocket/README.md)
-- [_Others](./_Others/README.md)
 
 ## 자료구조 / 알고리즘
 
@@ -163,16 +162,6 @@ Java와 Spring 기반 개발에서 반복적으로 등장하는 핵심 도구와
 - [Spring AOP 핵심 개념](https://github.com/ImGdevel/TIL/wiki/spring-aop-pointcut-advice-advisor)
 
 <br />
-<br />
-
----
-
-## _Others
-
-- [Popo](./_Others/Popo/)
-- [Tech](./_Others/Tech/)
-- [Tech Blog](./_Others/Tech%20Blog/)
-
 <br />
 
 ---
