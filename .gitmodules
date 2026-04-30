@@ -4,6 +4,6 @@
 [submodule "Elasticsearch"]
 	path = Elasticsearch
 	url = https://github.com/ImGdevel/Elasticsearch.git
-[submodule "spring-webflux"]
-	path = spring-webflux
+[submodule "Spring Webflux"]
+	path = Spring Webflux
 	url = https://github.com/ImGdevel/spring-webflux.git
