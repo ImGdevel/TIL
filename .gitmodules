@@ -1,3 +1,6 @@
 [submodule "Kafka"]
 	path = Kafka
 	url = https://github.com/ImGdevel/Kafka.git
+[submodule "Elasticsearch"]
+	path = Elasticsearch
+	url = https://github.com/ImGdevel/Elasticsearch.git
