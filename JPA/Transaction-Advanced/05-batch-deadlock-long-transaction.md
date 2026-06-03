@@ -1,0 +1,149 @@
+# 배치, 데드락, 긴 트랜잭션
+
+## 1. 큰 트랜잭션은 실패 비용이 크다
+
+수만 건을 하나의 트랜잭션으로 처리하면 다음 문제가 생긴다.
+
+- 영속성 컨텍스트가 계속 커진다.
+- DB row lock이 오래 유지된다.
+- 커밋 시점에 SQL이 몰린다.
+- 중간에 실패하면 전체가 롤백된다.
+- 장애 발생 시 어디까지 처리됐는지 추적하기 어렵다.
+
+나쁜 예:
+
+```java
+@Transactional
+public void migrateAll() {
+    List<Member> members = memberRepository.findAll();
+
+    for (Member member : members) {
+        member.recalculateGrade();
+    }
+}
+```
+
+## 2. 청크 단위로 트랜잭션을 나눈다
+
+대량 처리는 보통 청크 단위로 나눈다.
+
+```java
+public void migrateAll() {
+    long lastId = 0L;
+
+    while (true) {
+        List<Long> ids = memberRepository.findNextIds(lastId, 500);
+        if (ids.isEmpty()) {
+            break;
+        }
+
+        migrateChunk(ids);
+        lastId = ids.get(ids.size() - 1);
+    }
+}
+
+@Transactional
+public void migrateChunk(List<Long> ids) {
+    List<Member> members = memberRepository.findAllById(ids);
+
+    for (Member member : members) {
+        member.recalculateGrade();
+    }
+}
+```
+
+장점:
+
+- 실패 범위가 줄어든다.
+- 커넥션과 락 점유 시간이 짧아진다.
+- 재시작 지점을 잡기 쉽다.
+- 영속성 컨텍스트 크기를 제한할 수 있다.
+
+## 3. flush와 clear로 영속성 컨텍스트를 관리한다
+
+한 트랜잭션 안에서 많은 엔티티를 다룰 때는 영속성 컨텍스트가 계속 커진다.
+
+```java
+@Transactional
+public void bulkInsert(List<Order> orders) {
+    for (int i = 0; i < orders.size(); i++) {
+        entityManager.persist(orders.get(i));
+
+        if (i % 100 == 0) {
+            entityManager.flush();
+            entityManager.clear();
+        }
+    }
+}
+```
+
+`flush()`는 SQL을 DB로 보내고, `clear()`는 영속성 컨텍스트를 비운다. clear 이후에는 기존 엔티티가 detached 상태가 되므로, 이후 로직에서 다시 접근하거나 변경하지 않도록 주의해야 한다.
+
+## 4. 데드락은 락 획득 순서를 고정해서 줄인다
+
+데드락의 전형적인 형태는 서로 다른 순서로 같은 자원을 잠그는 것이다.
+
+```text
+Tx A: account 1 lock → account 2 lock 대기
+Tx B: account 2 lock → account 1 lock 대기
+```
+
+해결 원칙은 항상 같은 순서로 잠그는 것이다.
+
+```java
+@Transactional
+public void transfer(Long fromAccountId, Long toAccountId, Money amount) {
+    List<Long> ids = Stream.of(fromAccountId, toAccountId)
+        .sorted()
+        .toList();
+
+    List<Account> accounts = accountRepository.findAllForUpdate(ids);
+
+    Account from = find(accounts, fromAccountId);
+    Account to = find(accounts, toAccountId);
+
+    from.withdraw(amount);
+    to.deposit(amount);
+}
+```
+
+## 5. 인덱스가 없으면 더 넓게 잠길 수 있다
+
+조건에 맞는 row만 잠그고 싶어도 적절한 인덱스가 없으면 DB가 더 많은 row나 범위를 스캔하면서 락 경합이 커질 수 있다.
+
+```sql
+select *
+from coupon
+where event_id = ?
+  and status = 'READY'
+limit 1
+for update;
+```
+
+이 쿼리가 자주 실행된다면 `(event_id, status)` 같은 인덱스를 검토해야 한다. 락 전략은 쿼리와 인덱스 설계까지 함께 봐야 한다.
+
+## 6. timeout을 설정한다
+
+트랜잭션 또는 락 대기가 무한정 길어지면 장애가 전파된다.
+
+```java
+@Transactional(timeout = 5)
+public void closeSettlement(Long settlementId) {
+    Settlement settlement = settlementRepository.findForUpdate(settlementId)
+        .orElseThrow(SettlementNotFoundException::new);
+
+    settlement.close();
+}
+```
+
+timeout은 문제를 해결하는 장치라기보다 장애를 빠르게 드러내는 안전장치다. timeout이 자주 발생하면 트랜잭션 범위, 락 순서, 인덱스, 처리량을 다시 봐야 한다.
+
+## 7. 운영 관점 체크리스트
+
+- 트랜잭션 안에서 외부 API를 호출하지 않는가?
+- 같은 row를 잠글 때 항상 같은 순서를 사용하는가?
+- 대량 처리는 청크 단위로 나뉘어 있는가?
+- 영속성 컨텍스트가 과도하게 커지지 않는가?
+- lock timeout, deadlock 로그를 수집하고 있는가?
+- 조건부 update 또는 unique constraint로 더 단순하게 풀 수 없는가?
+
