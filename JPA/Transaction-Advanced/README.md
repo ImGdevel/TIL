@@ -6,13 +6,13 @@
 
 | 문서 | 다루는 질문 |
 | --- | --- |
-| [트랜잭션 경계와 전파 전략](./01-transaction-boundary-and-propagation.md) | 트랜잭션은 어디서 시작하고 어디서 끝내야 하는가? `REQUIRED`, `REQUIRES_NEW`, `NESTED`는 언제 쓰는가? |
-| [동시성 제어와 락 전략](./02-locking-and-concurrency.md) | 낙관적 락, 비관적 락, 조건부 update 중 무엇을 선택해야 하는가? |
-| [외부 시스템과 트랜잭션 일관성](./03-external-system-consistency.md) | 결제, 메시지, 알림 같은 외부 시스템과 DB 변경을 어떻게 일관되게 다룰 것인가? |
-| [조회 트랜잭션, flush, Lazy Loading](./04-read-flush-lazy-loading.md) | `readOnly`, flush 시점, OSIV, Lazy Loading 문제를 어떻게 다룰 것인가? |
-| [배치, 데드락, 긴 트랜잭션](./05-batch-deadlock-long-transaction.md) | 대량 처리와 락 경합을 어떻게 줄일 것인가? |
-| [@Transactional 실무 함정](./06-transactional-pitfalls.md) | self-invocation, rollback-only, checked exception 같은 함정을 어떻게 피할 것인가? |
-| [실무 안티패턴 체크리스트](./07-practical-antipattern-checklist.md) | 실제 장애로 이어지기 쉬운 트랜잭션 실수는 무엇인가? |
+| [트랜잭션 경계와 전파 전략](./트랜잭션-경계와-전파.md) | 트랜잭션은 어디서 시작하고 어디서 끝내야 하는가? `REQUIRED`, `REQUIRES_NEW`, `NESTED`는 언제 쓰는가? |
+| [동시성 제어와 락 전략](./동시성-제어와-락-전략.md) | 낙관적 락, 비관적 락, 조건부 update 중 무엇을 선택해야 하는가? |
+| [외부 시스템과 트랜잭션 일관성](./외부시스템-트랜잭션-일관성.md) | 결제, 메시지, 알림 같은 외부 시스템과 DB 변경을 어떻게 일관되게 다룰 것인가? |
+| [조회 트랜잭션, flush, Lazy Loading](./조회-트랜잭션-flush-Lazy-Loading.md) | `readOnly`, flush 시점, OSIV, Lazy Loading 문제를 어떻게 다룰 것인가? |
+| [배치, 데드락, 긴 트랜잭션](./배치-데드락-긴-트랜잭션.md) | 대량 처리와 락 경합을 어떻게 줄일 것인가? |
+| [@Transactional 실무 함정](./Transactional-실무-함정.md) | self-invocation, rollback-only, checked exception 같은 함정을 어떻게 피할 것인가? |
+| [실무 안티패턴 체크리스트](./트랜잭션-안티패턴-체크리스트.md) | 실제 장애로 이어지기 쉬운 트랜잭션 실수는 무엇인가? |
 
 ## 핵심 판단 기준
 

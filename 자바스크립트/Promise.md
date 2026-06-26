@@ -1,24 +1,18 @@
 # Promise: 콜백 지옥에서 벗어나기
 
-> 연결된 정리본:
-> - [Promise](../../../TIL.wiki/javascript-promise.md)
+> 태그: `#javascript` `#promise` `#비동기`<br>
+> 작성일: 2025-11-06<br>
+> 최종 수정일: 2026-06-25
 
+## 정의
 
-## 들어가며
+Promise는 비동기 작업의 성공 또는 실패 결과를 처리하기 위한 객체로, 작업이 당장 완료되지 않아도 나중에 결과(성공 또는 실패)를 알려주겠다고 약속하는 객체다.
 
-"이 데이터가 언제 올지 모르는데, 어떻게 처리하지?"
+## 특징 / 상세
 
-웹 개발을 하다 보면 항상 마주치는 고민입니다. 서버에서 데이터를 가져오거나, 파일을 읽거나, 타이머가 끝나기를 기다리는 등 시간이 걸리는 작업들이 있죠. 이런 **비동기 작업**을 어떻게 효율적으로 처리할 수 있을까요?
+### 1. 콜백 함수의 문제점과 Promise의 등장
 
-초창기 JavaScript에서는 **콜백 함수**로 이 문제를 해결했습니다. 하지만 콜백이 중첩되면서 악명 높은 **콜백 지옥(Callback Hell)**이 탄생했죠.
-
-이 문제를 우아하게 해결하기 위해 등장한 것이 바로 **Promise**입니다. Promise는 단순히 콜백의 대안이 아니라, 비동기 프로그래밍의 패러다임을 바꾼 핵심 개념입니다.
-
-## Promise가 왜 필요할까요?
-
-### 콜백 함수의 문제점
-
-초창기에는 비동기 작업을 처리하기 위해 **콜백 함수**를 사용했습니다. 함수를 인자로 넘겨서 작업이 완료되면 그 함수를 호출하는 방식이었죠.
+초창기에는 비동기 작업을 처리하기 위해 콜백 함수를 사용했다. 함수를 인자로 넘겨서 작업이 완료되면 그 함수를 호출하는 방식이었다:
 
 ```javascript
 // 콜백 함수를 사용한 비동기 처리
@@ -47,15 +41,13 @@ getUserData(userId, function(error, user) {
 });
 ```
 
-이 코드의 문제점은:
+이 코드의 문제점:
 
-1. **가독성 저하**: 중첩이 깊어질수록 코드가 오른쪽으로 계속 들여쓰기되어 읽기 어려워집니다
-2. **에러 처리 중복**: 각 콜백마다 에러 처리를 반복해야 합니다
-3. **유지보수 어려움**: 로직 변경이나 순서 조정이 매우 어렵습니다
+1. **가독성 저하**: 중첩이 깊어질수록 코드가 오른쪽으로 계속 들여쓰기되어 읽기 어려워짐
+2. **에러 처리 중복**: 각 콜백마다 에러 처리를 반복해야 함
+3. **유지보수 어려움**: 로직 변경이나 순서 조정이 매우 어려움
 
-### Promise의 등장
-
-이런 문제를 해결하기 위해 등장한 것이 **Promise**입니다.
+Promise를 사용하면 같은 로직을 훨씬 읽기 쉽게, 에러 처리도 한 곳에서 할 수 있다:
 
 ```javascript
 // Promise를 사용한 비동기 처리
@@ -66,29 +58,19 @@ getUserData(userId)
   .catch(error => console.error('에러 발생:', error));
 ```
 
-같은 로직인데 훨씬 읽기 쉽고, 에러 처리도 한 곳에서 할 수 있습니다!
+### 2. 카페 진동벨 비유
 
-## Promise란 무엇인가?
-
-Promise는 **비동기 작업의 성공 또는 실패 결과를 처리하기 위한 객체**입니다.
-
-쉽게 말해, 시간이 걸리는 작업(예: API 호출해서 데이터 가져오기)을 시작했을 때, 그 작업이 당장 완료되지는 않지만 나중에 결과(성공 또는 실패)를 **꼭 알려주겠다고 약속하는 객체**입니다.
-
-### 카페 진동벨 비유
-
-카페에서 음료를 주문하면 점원이 진동벨을 줍니다. "음료 준비되면 벨이 울릴 거예요!" 이게 바로 Promise입니다.
+카페에서 음료를 주문하면 점원이 진동벨을 준다. "음료 준비되면 벨이 울릴 거예요!" 이게 바로 Promise다.
 
 - **주문을 받음** = Promise 객체 생성 (Pending)
 - **음료가 완성됨** = 작업 성공 (Fulfilled)
 - **재료가 떨어짐** = 작업 실패 (Rejected)
 
-진동벨을 받은 손님은 자리로 돌아가서 다른 일을 할 수 있습니다. 음료가 준비될 때까지 카운터 앞에서 기다릴 필요가 없죠. 이것이 바로 **비동기 처리**의 핵심입니다.
+진동벨을 받은 손님은 자리로 돌아가서 다른 일을 할 수 있다. 음료가 준비될 때까지 카운터 앞에서 기다릴 필요가 없다. 이것이 비동기 처리의 핵심이다.
 
-## Promise의 세 가지 상태
+### 3. Promise의 세 가지 상태
 
-Promise 객체는 항상 세 가지 상태 중 하나에 있습니다:
-
-### 1. Pending (대기)
+**Pending (대기):**
 
 ```javascript
 const promise = new Promise((resolve, reject) => {
@@ -97,13 +79,13 @@ const promise = new Promise((resolve, reject) => {
 });
 ```
 
-- 약속을 한 직후의 상태입니다
-- 아직 결과가 나오지 않고 기다리는 중입니다
-- 비동기 작업이 진행 중인 상태입니다
-- `new Promise`로 객체가 생성되는 시점부터 대기 상태로 들어갑니다
+- 약속을 한 직후의 상태
+- 아직 결과가 나오지 않고 기다리는 중
+- 비동기 작업이 진행 중인 상태
+- `new Promise`로 객체가 생성되는 시점부터 대기 상태로 들어감
 - 카페 비유: 주문을 넣고 진동벨을 받아서 음료가 만들어지기를 기다리는 상태
 
-### 2. Fulfilled (이행)
+**Fulfilled (이행):**
 
 ```javascript
 const promise = new Promise((resolve, reject) => {
@@ -113,13 +95,13 @@ const promise = new Promise((resolve, reject) => {
 });
 ```
 
-- 약속이 성공적으로 지켜진 상태입니다
-- 비동기 작업이 성공적으로 완료되어서 결과값을 반환한 상태입니다
-- `resolve` 함수가 호출되면 이행 상태로 바뀌고, `resolve` 함수에 전달된 값이 Promise의 최종 결과값이 됩니다
-- 서버에서 사용자 데이터를 성공적으로 가져온 경우입니다
+- 약속이 성공적으로 지켜진 상태
+- 비동기 작업이 성공적으로 완료되어서 결과값을 반환한 상태
+- `resolve` 함수가 호출되면 이행 상태로 바뀌고, `resolve`에 전달된 값이 Promise의 최종 결과값이 됨
+- 서버에서 사용자 데이터를 성공적으로 가져온 경우
 - 카페 비유: 음료가 완성되어서 진동벨이 울리는 상태
 
-### 3. Rejected (거부)
+**Rejected (거부):**
 
 ```javascript
 const promise = new Promise((resolve, reject) => {
@@ -129,17 +111,13 @@ const promise = new Promise((resolve, reject) => {
 });
 ```
 
-- 약속이 지켜지지 못한 상태입니다
-- 비동기 작업이 실패하고 오류가 발생한 상태입니다
-- `reject` 함수가 호출되면 거부 상태로 바뀝니다
-- 네트워크 오류로 데이터를 가져오지 못한 경우입니다
+- 약속이 지켜지지 못한 상태
+- 비동기 작업이 실패하고 오류가 발생한 상태
+- `reject` 함수가 호출되면 거부 상태로 바뀜
+- 네트워크 오류로 데이터를 가져오지 못한 경우
 - 카페 비유: 재료가 떨어져서 음료를 만들지 못하는 상태
 
-### 상태 전이의 중요한 규칙
-
-**Fulfilled나 Rejected 상태가 되면 그 상태는 절대 변하지 않습니다.**
-
-약속이 한번 지켜지거나 깨지면 그걸로 끝입니다. 이를 **불변성(Immutability)**이라고 하며, 비동기 코드의 안정성을 보장합니다.
+**상태 전이의 중요한 규칙** — Fulfilled나 Rejected 상태가 되면 그 상태는 절대 변하지 않는다. 약속이 한번 지켜지거나 깨지면 그걸로 끝이다. 이를 **불변성(Immutability)**이라고 하며, 비동기 코드의 안정성을 보장한다.
 
 ```javascript
 const promise = new Promise((resolve, reject) => {
@@ -151,11 +129,9 @@ const promise = new Promise((resolve, reject) => {
 promise.then(value => console.log(value)); // '성공!' 출력
 ```
 
-## Promise 생성과 사용
+### 4. Promise 생성과 사용
 
-### Promise 생성하기
-
-Promise는 `new Promise` 생성자를 통해 만듭니다:
+Promise는 `new Promise` 생성자를 통해 만든다:
 
 ```javascript
 const myPromise = new Promise((resolve, reject) => {
@@ -165,11 +141,11 @@ const myPromise = new Promise((resolve, reject) => {
 });
 ```
 
-생성자 함수는 두 개의 인자를 받습니다:
+생성자 함수는 두 개의 인자를 받는다:
 - **resolve**: 작업이 성공했을 때 호출하는 함수
 - **reject**: 작업이 실패했을 때 호출하는 함수
 
-### 실제 예제: 사용자 정보 가져오기
+**실제 예제: 사용자 정보 가져오기**
 
 ```javascript
 const getUserNameById = (id) => {
@@ -209,23 +185,14 @@ getUserNameById(999)
   });
 ```
 
-### resolve와 reject 함수
+**resolve와 reject 함수:**
 
-**resolve 함수:**
-- 비동기 작업이 성공했을 때 호출하는 함수입니다
-- 호출해야만 Fulfilled 상태로 변경됩니다
-- 전달된 값이 `.then()`으로 넘어갑니다
+- resolve: 비동기 작업이 성공했을 때 호출, 호출해야만 Fulfilled 상태로 변경됨, 전달된 값이 `.then()`으로 넘어감
+- reject: 비동기 작업이 실패했을 때 호출, 호출해야만 Rejected 상태로 변경됨, 전달된 에러가 `.catch()`로 넘어감
 
-**reject 함수:**
-- 비동기 작업이 실패했을 때 호출하는 함수입니다
-- 호출해야만 Rejected 상태로 변경됩니다
-- 전달된 에러가 `.catch()`로 넘어갑니다
+### 5. Promise를 사용하는 이유
 
-## Promise를 사용하는 이유
-
-### 1. 명확한 에러 처리
-
-콜백 방식에서는 함수마다 에러 처리를 따로 해야 했습니다:
+**명확한 에러 처리** — 콜백 방식에서는 함수마다 에러 처리를 따로 해야 했다:
 
 ```javascript
 // 콜백 방식: 각 단계마다 에러 처리 필요
@@ -253,7 +220,7 @@ getUserData(userId, function(error, user) {
 });
 ```
 
-하지만 Promise는 `then()`이 몇 개든 마지막 `.catch()`에서 한 번에 처리할 수 있어서 명확하고 깔끔합니다:
+Promise는 `then()`이 몇 개든 마지막 `.catch()`에서 한 번에 처리할 수 있다:
 
 ```javascript
 // Promise 방식: 마지막에 한 번만 처리
@@ -264,27 +231,17 @@ getUserData(userId)
   .catch(error => console.error(error)); // 모든 에러를 여기서 처리
 ```
 
-### 2. 가독성 향상
+그 외 이유:
 
-콜백 지옥에서 벗어나 코드를 순차적으로 읽을 수 있습니다. 코드가 수직으로 플랫하게 작성되어 로직의 흐름을 쉽게 파악할 수 있습니다.
+- **가독성 향상**: 콜백 지옥에서 벗어나 코드를 순차적으로 읽을 수 있음. 코드가 수직으로 플랫하게 작성되어 로직의 흐름을 쉽게 파악할 수 있음
+- **체이닝 가능**: `.then()`을 계속 연결할 수 있어서 여러 비동기 작업을 순차적으로 처리하기 쉬움
+- **조합 가능**: `Promise.all`, `Promise.race` 등의 메서드를 통해 여러 Promise를 효율적으로 조합할 수 있음
 
-### 3. 체이닝 가능
+### 6. Promise Chain (프로미스 체이닝)
 
-Promise는 `.then()`을 계속 연결할 수 있어서 여러 비동기 작업을 순차적으로 처리하기 쉽습니다.
+`.then()`을 계속 연결해서 비동기 작업을 순차적으로 처리할 수 있다. `then()`이 **무엇을 반환하느냐**에 따라서 다음 `then()`의 동작이 결정된다.
 
-### 4. 조합 가능
-
-`Promise.all`, `Promise.race` 등의 메서드를 통해 여러 Promise를 효율적으로 조합할 수 있습니다.
-
-## Promise Chain (프로미스 체이닝)
-
-Promise의 강력한 기능 중 하나는 **체이닝(Chaining)**입니다. `.then()`을 계속 연결해서 비동기 작업을 순차적으로 처리할 수 있습니다.
-
-`then()`이 **무엇을 반환하느냐**에 따라서 다음 `then()`의 동작이 결정됩니다:
-
-### 1. 일반 값을 반환하는 경우
-
-다음 `then()`이 그 값을 즉시 인자로 받아서 처리합니다.
+**일반 값을 반환하는 경우** — 다음 `then()`이 그 값을 즉시 인자로 받아서 처리한다:
 
 ```javascript
 Promise.resolve(1)
@@ -306,9 +263,7 @@ Promise.resolve(1)
 // 3
 ```
 
-### 2. Promise를 반환하는 경우
-
-다음 `then()`은 그 Promise가 완료될 때까지 기다렸다가, 그 Promise의 결과값으로 받습니다.
+**Promise를 반환하는 경우** — 다음 `then()`은 그 Promise가 완료될 때까지 기다렸다가, 그 Promise의 결과값으로 받는다:
 
 ```javascript
 Promise.resolve(1)
@@ -336,9 +291,9 @@ Promise.resolve(1)
 // 3
 ```
 
-**이 2번 규칙이 비동기 작업을 순차적으로 연결하는 핵심입니다!**
+이 2번째 규칙이 비동기 작업을 순차적으로 연결하는 핵심이다.
 
-### 실제 사용 예제: 순차적 API 호출
+**실제 사용 예제: 순차적 API 호출**
 
 ```javascript
 // 사용자 정보 조회 → 주문 목록 조회 → 첫 주문 상세 조회
@@ -359,9 +314,7 @@ getUserById(1)
   });
 ```
 
-### 올바른 체이닝 방식 vs 잘못된 방식
-
-Promise 체인은 **수직으로 플랫하게** 작성해야 합니다:
+**올바른 체이닝 방식 vs 잘못된 방식** — Promise 체인은 수직으로 플랫하게 작성해야 한다:
 
 ```javascript
 // ✅ 올바른 방식: 플랫한 체인
@@ -382,9 +335,9 @@ getUserById(1)
   });
 ```
 
-잘못된 방식은 Promise를 사용하는 의미가 없어집니다. 콜백 지옥과 같은 구조가 되어버리죠!
+잘못된 방식은 Promise를 사용하는 의미가 없어진다. 콜백 지옥과 같은 구조가 되어버린다.
 
-### finally(): 성공/실패 관계없이 실행
+**finally(): 성공/실패 관계없이 실행:**
 
 ```javascript
 fetch('/api/data')
@@ -397,13 +350,11 @@ fetch('/api/data')
   });
 ```
 
-## 여러 개의 Promise 다루기
+### 7. 여러 개의 Promise 다루기
 
-실무에서는 여러 비동기 작업을 동시에 처리해야 하는 경우가 많습니다. Promise는 이런 경우를 위한 유틸리티 메서드를 제공합니다.
+실무에서는 여러 비동기 작업을 동시에 처리해야 하는 경우가 많다. Promise는 이런 경우를 위한 유틸리티 메서드를 제공하며, 각 메서드는 성공/실패 시점의 판단이 다르다.
 
-각 메서드는 **성공/실패 시점의 판단이 다릅니다**.
-
-### Promise.all - 모두 성공해야 할 때
+**Promise.all - 모두 성공해야 할 때:**
 
 ```javascript
 const promise1 = fetch('/api/popular-products');
@@ -427,8 +378,7 @@ Promise.all([promise1, promise2, promise3])
 | **반환값** | 모든 Promise의 결과값을 담은 배열 `[결과1, 결과2, 결과3]` |
 | **언제 사용?** | 모든 API 요청이 반드시 성공해야 하는 경우 (필수 데이터) |
 
-**실무 예시:**
-쇼핑몰 메인 페이지에서 인기상품, 추천상품, 신상품 API를 모두 호출해야 하고, 각 요청은 독립적이지만 **모두 성공했을 때 UI를 한번에 렌더링**하고 싶을 때 사용합니다.
+실무 예시: 쇼핑몰 메인 페이지에서 인기상품, 추천상품, 신상품 API를 모두 호출해야 하고, 각 요청은 독립적이지만 **모두 성공했을 때 UI를 한번에 렌더링**하고 싶을 때 사용한다.
 
 ```javascript
 Promise.all([
@@ -446,7 +396,7 @@ Promise.all([
   });
 ```
 
-### Promise.allSettled - 부분 실패를 허용할 때
+**Promise.allSettled - 부분 실패를 허용할 때:**
 
 ```javascript
 const promise1 = fetch('/api/popular-products');
@@ -474,7 +424,8 @@ Promise.allSettled([promise1, promise2, promise3])
 | **반환값** | 각 Promise의 상태와 결과/이유를 담은 객체 배열 |
 | **언제 사용?** | 여러 API 요청 중 일부가 실패해도 괜찮을 때 |
 
-**반환값 구조:**
+반환값 구조:
+
 ```javascript
 [
   { status: 'fulfilled', value: 결과값 },
@@ -482,8 +433,7 @@ Promise.allSettled([promise1, promise2, promise3])
 ]
 ```
 
-**실무 예시:**
-신상품 API가 일시적으로 오류가 나도 인기상품, 추천상품은 보여주고 싶을 때. 결과 배열을 순회하면서 `status`가 'fulfilled'인 데이터는 렌더링하고, 'rejected'인 데이터는 폴백 UI를 보여줄 수 있습니다.
+실무 예시: 신상품 API가 일시적으로 오류가 나도 인기상품, 추천상품은 보여주고 싶을 때. 결과 배열을 순회하면서 `status`가 'fulfilled'인 데이터는 렌더링하고, 'rejected'인 데이터는 폴백 UI를 보여줄 수 있다.
 
 ```javascript
 Promise.allSettled([
@@ -502,7 +452,7 @@ Promise.allSettled([
   });
 ```
 
-### Promise.any - 하나라도 성공하면 될 때
+**Promise.any - 하나라도 성공하면 될 때:**
 
 ```javascript
 const server1 = fetch('https://mirror1.example.com/file.zip');
@@ -525,11 +475,11 @@ Promise.any([server1, server2, server3])
 | **반환값** | 가장 먼저 Fulfilled 된 Promise의 결과값 |
 | **언제 사용?** | 여러 대안 중 하나만 성공해도 되는 경우 |
 
-**실무 예시:**
+실무 예시:
 - 여러 미러 서버 중 가장 빠른 서버에서 파일 다운로드
 - 여러 API 엔드포인트 중 하나라도 응답하면 되는 경우
 
-### Promise.race - 가장 빠른 응답을 원할 때
+**Promise.race - 가장 빠른 응답을 원할 때:**
 
 ```javascript
 const dataPromise = fetch('/api/data');
@@ -548,11 +498,11 @@ Promise.race([dataPromise, timeoutPromise])
 | **반환값** | 가장 먼저 완료된 Promise의 결과 또는 에러 |
 | **언제 사용?** | 타임아웃 구현, 가장 빠른 응답을 받고 싶을 때 |
 
-**실무 예시:**
+실무 예시:
 - API 호출에 타임아웃 설정
 - 여러 경로 중 가장 빠른 응답 사용
 
-### Promise 메서드 비교 표
+**Promise 메서드 비교 표:**
 
 | 메서드 | 성공 조건 | 실패 조건 | 반환값 | 주요 사용처 |
 |--------|-----------|-----------|--------|-------------|
@@ -561,9 +511,9 @@ Promise.race([dataPromise, timeoutPromise])
 | `Promise.any` | 하나라도 성공 | 모두 실패 | 첫 성공 결과 | 미러 서버, 대안 |
 | `Promise.race` | 첫 완료 | 첫 실패 | 첫 완료 결과 | 타임아웃, 속도 경쟁 |
 
-## Promise와 Event Loop
+### 8. Promise와 Event Loop
 
-Promise는 **Microtask Queue**를 사용합니다. Event Loop 관점에서 Promise의 `then()`, `catch()`, `finally()` 콜백은 모두 Microtask Queue에 들어갑니다.
+Promise는 **Microtask Queue**를 사용한다. Event Loop 관점에서 Promise의 `then()`, `catch()`, `finally()` 콜백은 모두 Microtask Queue에 들어간다.
 
 ```javascript
 console.log('1'); // 동기 코드
@@ -586,19 +536,18 @@ console.log('4'); // 동기 코드
 // 2
 ```
 
-**이것이 Promise가 `setTimeout`보다 항상 먼저 실행되는 이유입니다!**
+이것이 Promise가 `setTimeout`보다 항상 먼저 실행되는 이유다. Event Loop는 다음 순서로 작업을 처리한다:
 
-Event Loop는 다음 순서로 작업을 처리합니다:
 1. 동기 코드 (Call Stack)
 2. Microtask Queue의 모든 작업 (Promise)
 3. Macrotask Queue에서 하나 (setTimeout)
 4. 2번으로 돌아가기
 
-자세한 내용은 [Event Loop와 비동기 처리](./Event-Loop와-비동기-처리.md) 문서를 참고하세요.
+자세한 내용은 [이벤트-루프와-비동기-처리](이벤트-루프와-비동기-처리.md), [Event-Loop와-비동기-처리](Event-Loop와-비동기-처리.md) 문서를 참고한다.
 
-## 실무 패턴과 Best Practices
+### 9. 실무 패턴과 Best Practices
 
-### 1. Promise를 반환하는 함수 만들기
+**Promise를 반환하는 함수 만들기:**
 
 ```javascript
 // ✅ 좋은 예: Promise를 반환하는 함수
@@ -613,7 +562,7 @@ fetchUserData(1)
   .catch(error => console.error(error));
 ```
 
-### 2. 에러 처리를 항상 포함하기
+**에러 처리를 항상 포함하기:**
 
 ```javascript
 // ❌ 나쁜 예: catch 없음
@@ -626,7 +575,7 @@ getUserData(1)
   .catch(error => console.error(error));
 ```
 
-### 3. Promise 체인에서 값 전달하기
+**Promise 체인에서 값 전달하기:**
 
 ```javascript
 getUserById(1)
@@ -643,7 +592,7 @@ getUserById(1)
   });
 ```
 
-### 4. 병렬 처리가 가능하면 Promise.all 사용
+**병렬 처리가 가능하면 Promise.all 사용:**
 
 ```javascript
 // ❌ 나쁜 예: 순차적으로 실행 (느림)
@@ -661,9 +610,9 @@ const [user, products, categories] = await Promise.all([
 // 총 시간: 가장 느린 요청의 시간
 ```
 
-## 자주 하는 실수와 해결법
+### 10. 자주 하는 실수와 해결법
 
-### 실수 1: Promise를 반환하지 않기
+**실수 1: Promise를 반환하지 않기**
 
 ```javascript
 // ❌ 잘못된 코드
@@ -683,7 +632,7 @@ function getUserData(id) {
 }
 ```
 
-### 실수 2: then 안에서 Promise를 중첩하기
+**실수 2: then 안에서 Promise를 중첩하기**
 
 ```javascript
 // ❌ 잘못된 코드 (콜백 지옥과 비슷)
@@ -701,7 +650,7 @@ getUserById(1)
   .then(orders => console.log(orders));
 ```
 
-### 실수 3: catch를 빠뜨리기
+**실수 3: catch를 빠뜨리기**
 
 ```javascript
 // ❌ 잘못된 코드
@@ -727,7 +676,7 @@ Promise.resolve()
   });
 ```
 
-### 실수 4: Promise 생성자에서 비동기 작업을 제대로 처리하지 않기
+**실수 4: Promise 생성자에서 비동기 작업을 제대로 처리하지 않기**
 
 ```javascript
 // ❌ 잘못된 코드
@@ -751,9 +700,7 @@ const promise = new Promise((resolve, reject) => {
 });
 ```
 
-## 핵심 정리
-
-Promise를 이해하기 위한 핵심을 정리하면:
+### 11. 핵심 정리
 
 | 개념 | 설명 |
 |------|------|
@@ -779,9 +726,9 @@ Promise를 이해하기 위한 핵심을 정리하면:
 - Promise 체인은 중첩하지 말고 플랫하게 작성
 - 병렬 처리 가능한 경우 `Promise.all` 사용
 
-## 다음 단계: async/await
+### 12. 다음 단계: async/await
 
-Promise는 콜백보다 훨씬 낫지만, 여전히 `.then()` 체인이 길어지면 복잡할 수 있습니다. 이를 더욱 간결하게 만든 것이 **async/await** 문법입니다.
+Promise는 콜백보다 훨씬 낫지만, 여전히 `.then()` 체인이 길어지면 복잡할 수 있다. 이를 더욱 간결하게 만든 것이 async/await 문법이다.
 
 ```javascript
 // Promise 체인
@@ -804,15 +751,28 @@ async function getOrderInfo() {
 }
 ```
 
-async/await는 Promise를 **더 동기 코드처럼 읽히게** 만든 문법적 설탕(Syntactic Sugar)입니다. 내부적으로는 여전히 Promise를 사용하므로, Promise를 먼저 이해하는 것이 중요합니다!
+async/await는 Promise를 **더 동기 코드처럼 읽히게** 만든 문법적 설탕(Syntactic Sugar)이다. 내부적으로는 여전히 Promise를 사용하므로, Promise를 먼저 이해하는 것이 중요하다.
 
-## 참고 자료
+## 트레이드오프
+
+해당 없음 — 언어 API 선택의 문제이며 분산 시스템 트레이드오프(일관성/가용성/지연/비용/운영부담)와는 무관. `Promise.all`/`allSettled`/`any`/`race` 간 성공·실패 조건과 사용처의 차이는 특징/상세 7번 표 참고.
+
+## 실무 경험
+
+해당 없음 (관련 실무 내용은 특징/상세 9번 "실무 패턴과 Best Practices", 10번 "자주 하는 실수와 해결법"에 포함)
+
+## 참고
+
+원본 학습 노트(TIL)에 `> 연결된 정리본: Promise` 링크(`../../../TIL.wiki/javascript-promise.md`)가 있었으나, 이 볼트 외부의 위키 경로라 마크다운 링크로 옮기지 않음. 필요 시 원본 TIL 위키에서 직접 확인.
 
 - [MDN Web Docs - Promise](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 - [JavaScript.info - Promises, async/await](https://javascript.info/async)
 - [MDN Web Docs - Using Promises](https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Using_promises)
 - [You Don't Know JS: Async & Performance](https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/async%20%26%20performance/README.md)
 
----
+## 관련 내용
 
-*작성일: 2025-11-06*
+- [JS-함수-선언](JS-함수-선언.md)
+- [Event-Loop와-비동기-처리](Event-Loop와-비동기-처리.md)
+- [이벤트-루프와-비동기-처리](이벤트-루프와-비동기-처리.md)
+- [블로킹-논블로킹과-동기-비동기](블로킹-논블로킹과-동기-비동기.md)

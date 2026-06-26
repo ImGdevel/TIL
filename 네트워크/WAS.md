@@ -1,17 +1,23 @@
 # WAS (Web Application Server)
 
-## 개념
+> 태그: `#network` `#was` `#tomcat` `#servlet` `#spring`<br>
+> 작성일: 2026-06-23<br>
+> 최종 수정일: 2026-06-23
 
-WAS는 동적 요청을 처리하는 서버다. Spring Boot 같은 서버 프레임워크가 동작하는 환경을 제공한다.
+## 정의
+
+WAS는 동적 요청(비즈니스 로직, DB 조회)을 처리하는 서버로, Tomcat 같은 서블릿 컨테이너가 HTTP 텍스트를 Java 객체로 변환하고 Filter Chain → DispatcherServlet → Controller로 이어지는 흐름을 거쳐 응답을 만든다.
+
+## 특징 / 상세
+
+### 개념
 
 ```
 웹서버 (Nginx)  → 정적 리소스 처리 (HTML, CSS, JS, 이미지)
 WAS (Tomcat)   → 동적 리소스 처리 (비즈니스 로직, DB 조회)
 ```
 
----
-
-## Tomcat = WAS = 서블릿 컨테이너
+### Tomcat = WAS = 서블릿 컨테이너
 
 세 가지는 같은 의미로 봐도 된다.
 
@@ -27,9 +33,7 @@ Tomcat 외에도 다른 WAS가 있다.
 | Jetty | 경량화 |
 | Undertow | JBoss 계열. Spring Boot에서 선택 가능 |
 
----
-
-## 서블릿 컨테이너 역할
+### 서블릿 컨테이너 역할
 
 HTTP는 그냥 텍스트다.
 
@@ -59,11 +63,9 @@ Tomcat이 하는 일
 3. 다 통과하면 DispatcherServlet 호출
 ```
 
----
+### Spring vs Spring Boot — Tomcat 차이
 
-## Spring vs Spring Boot — Tomcat 차이
-
-### Spring (구버전)
+**Spring (구버전)**
 
 Tomcat을 외부에 별도 설치하고, 프로젝트를 WAR로 빌드해서 배포한다.
 
@@ -78,7 +80,7 @@ Tomcat (외부)
             └── myapp.war
 ```
 
-### Spring Boot
+**Spring Boot**
 
 Tomcat이 JAR 안에 내장되어 있다.
 
@@ -102,9 +104,7 @@ Spring Boot 내장 방식 장점
 → Docker 컨테이너화 쉬움
 ```
 
----
-
-## Spring Boot 요청 처리 흐름
+### Spring Boot 요청 처리 흐름
 
 ```mermaid
 flowchart TD
@@ -128,9 +128,7 @@ flowchart TD
     DB --> RP --> SV --> CT --> IP --> MC --> RES
 ```
 
----
-
-## Filter Chain
+### Filter Chain
 
 Filter가 여러 개 있을 때 순서대로 체인처럼 연결된 구조다. Tomcat 서블릿 컨테이너 안에 위치한다.
 
@@ -161,7 +159,7 @@ public void doFilter(request, response, chain) {
 
 Spring Security 인증 실패 시 `chain.doFilter()` 를 호출하지 않아 Controller까지 가지 않고 즉시 401 반환한다.
 
-### 기본 Filter (Spring Security 없어도 존재)
+**기본 Filter (Spring Security 없어도 존재)**
 
 | Filter | 역할 |
 |---|---|
@@ -169,7 +167,7 @@ Spring Security 인증 실패 시 `chain.doFilter()` 를 호출하지 않아 Con
 | FormContentFilter | PUT/PATCH form 데이터 파싱 |
 | RequestContextFilter | 요청 컨텍스트 관리 |
 
-### Spring Security 추가 시
+**Spring Security 추가 시**
 
 | Filter | 역할 |
 |---|---|
@@ -178,7 +176,7 @@ Spring Security 인증 실패 시 `chain.doFilter()` 를 호출하지 않아 Con
 | ExceptionTranslationFilter | 인증 예외 처리 |
 | FilterSecurityInterceptor | 인가 처리 |
 
-### Filter vs Interceptor
+**Filter vs Interceptor**
 
 ```
 Filter      → Spring 컨텍스트 밖, 서블릿 레벨
@@ -193,9 +191,7 @@ Interceptor → Spring 컨텍스트 안, DispatcherServlet 이후
 | 예외 처리 | @ExceptionHandler 불가 | @ExceptionHandler 가능 |
 | 주요 용도 | Spring Security, CORS, 인코딩 | 로그인 체크, API 로깅, 권한 체크 |
 
----
-
-## DispatcherServlet
+### DispatcherServlet
 
 Spring MVC의 프론트 컨트롤러다. 모든 요청이 여기를 거쳐간다.
 
@@ -206,7 +202,7 @@ DispatcherServlet
     └── MessageConverter → 반환값 JSON으로 변환
 ```
 
-### HandlerMapping
+**HandlerMapping**
 
 Spring 시작 시점에 모든 Controller의 URL 매핑을 미리 스캔해서 Map으로 들고 있다.
 
@@ -218,11 +214,11 @@ Spring 시작 시점에 모든 Controller의 URL 매핑을 미리 스캔해서 M
 
 요청이 오면 이 Map에서 찾아서 해당 메서드 실행한다.
 
-### HandlerAdapter
+**HandlerAdapter**
 
 찾아낸 Controller를 DispatcherServlet이 실행할 수 있는 형태로 변환한다.
 
-### MessageConverter vs ModelAndView
+**MessageConverter vs ModelAndView**
 
 | | ModelAndView | MessageConverter |
 |---|---|---|
@@ -249,10 +245,23 @@ public List<User> getUsers() {
 
 `@ResponseBody` 가 있어야 MessageConverter가 동작한다.
 
----
+## 트레이드오프
 
-## 참고 자료
+해당 없음
+
+## 실무 경험
+
+해당 없음
+
+## 참고
+
+원본 학습 노트(TIL)에서 이전한 링크. 확인일 미기재 — 필요 시 재검증.
 
 - [Apache Tomcat 공식 문서](https://tomcat.apache.org/tomcat-10.1-doc/)
 - [Spring MVC 공식 문서](https://docs.spring.io/spring-framework/docs/current/reference/html/web.html)
 - [Spring Boot 내장 서버](https://docs.spring.io/spring-boot/docs/current/reference/html/web.html#web.servlet.embedded-container)
+
+## 관련 내용
+
+- [리버스-프록시](리버스-프록시.md)
+- [웹-요청-흐름](웹-요청-흐름.md)

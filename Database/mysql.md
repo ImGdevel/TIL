@@ -1,8 +1,16 @@
 # MySQL
 
-## 개요
+> 태그: `#db` `#mysql` `#rdbms`<br>
+> 작성일: 2026-06-23<br>
+> 최종 수정일: 2026-06-23
 
-MySQL은 오픈소스 관계형 데이터베이스다. 단순 CRUD 중심의 서비스에서 읽기 성능이 뛰어나고, 복제 생태계가 성숙해서 대규모 트래픽 처리에 강점이 있다. 카카오, 네이버, 라인 등 국내 대형 서비스들이 오랫동안 사용해온 DB다.
+## 정의
+
+MySQL은 InnoDB 스토리지 엔진을 기본으로 하는 오픈소스 관계형 데이터베이스로, 단순 CRUD 중심 워크로드에서 읽기 성능과 성숙한 복제 생태계를 강점으로 대규모 트래픽 서비스에 널리 쓰인다.
+
+## 특징 / 상세
+
+### 사용처
 
 ```
 MySQL이 유리한 상황
@@ -12,9 +20,9 @@ MySQL이 유리한 상황
 → 운영 부담을 낮추고 싶은 경우
 ```
 
----
+카카오, 네이버, 라인 등 국내 대형 서비스들이 오랫동안 사용해온 DB다.
 
-## 스토리지 엔진 아키텍처
+### 스토리지 엔진 아키텍처
 
 MySQL만의 독특한 구조다. 쿼리 처리 레이어와 실제 데이터 저장 레이어가 분리되어 있다.
 
@@ -33,7 +41,7 @@ CREATE TABLE orders (id INT, amount DECIMAL) ENGINE = InnoDB;
 CREATE TABLE logs   (id INT, message TEXT)   ENGINE = Archive;
 ```
 
-### 스토리지 엔진 종류
+#### 스토리지 엔진 종류
 
 | 엔진 | 특징 | 용도 |
 |---|---|---|
@@ -42,7 +50,7 @@ CREATE TABLE logs   (id INT, message TEXT)   ENGINE = Archive;
 | Memory | 메모리 저장, 재시작 시 초기화 | 임시 테이블 |
 | Archive | INSERT만 가능, 높은 압축률 | 로그성 데이터 |
 
-### MyISAM → InnoDB 전환 이유
+#### MyISAM → InnoDB 전환 이유
 
 MySQL 5.5 이전 기본 엔진은 MyISAM이었다. 치명적인 단점 때문에 InnoDB로 전환됐다.
 
@@ -56,11 +64,9 @@ MyISAM 단점
 
 현재 MySQL = InnoDB라고 봐도 무방하다.
 
----
+### InnoDB 핵심 구조
 
-## InnoDB 핵심 구조
-
-### MVCC — Undo Log 방식
+#### MVCC — Undo Log 방식
 
 InnoDB는 MVCC를 Undo Log 방식으로 구현한다.
 
@@ -85,7 +91,7 @@ Long Transaction 발생 시
 → ibdata 파일이 커짐 (한번 커지면 줄일 수 없음)
 ```
 
-### 버퍼 풀 (Buffer Pool)
+#### 버퍼 풀 (Buffer Pool)
 
 InnoDB의 핵심 메모리 구조다. 자주 접근하는 데이터와 인덱스를 메모리에 캐싱한다.
 
@@ -104,20 +110,18 @@ FROM information_schema.INNODB_METRICS
 WHERE name IN ('buffer_pool_reads', 'buffer_pool_read_requests');
 ```
 
-### Redo Log / Undo Log
+#### Redo Log / Undo Log
 
 ```
 Redo Log → 장애 복구용. 커밋된 변경사항을 기록
 Undo Log → MVCC용. 이전 버전 데이터 저장
 ```
 
----
-
-## 클러스터드 인덱스
+### 클러스터드 인덱스
 
 InnoDB의 핵심 특징이다. **PK가 곧 데이터 파일**이다.
 
-### 일반 인덱스 vs 클러스터드 인덱스
+#### 일반 인덱스 vs 클러스터드 인덱스
 
 일반 B-Tree 인덱스는 인덱스 파일과 데이터 파일이 분리되어 있다.
 
@@ -139,7 +143,7 @@ flowchart TD
 
 PK로 조회 시 인덱스 탐색 한 번으로 데이터까지 바로 가져온다.
 
-### Secondary Index — 이중 조회
+#### Secondary Index — 이중 조회
 
 PK 외 컬럼에 인덱스를 걸면 리프 노드에 해당 컬럼 값 + PK가 저장된다.
 
@@ -152,7 +156,7 @@ SELECT * FROM users WHERE email = 'chul@chul.com'
 → 두 번 읽어야 함
 ```
 
-### PK 설계가 중요한 이유
+#### PK 설계가 중요한 이유
 
 ```
 좋은 PK — AUTO_INCREMENT (단조 증가)
@@ -166,7 +170,7 @@ SELECT * FROM users WHERE email = 'chul@chul.com'
 → 데이터 단편화
 ```
 
-### Covering Index
+#### Covering Index
 
 쿼리에 필요한 컬럼을 전부 인덱스에 포함시켜 Row Lookup을 제거한다.
 
@@ -178,9 +182,7 @@ CREATE INDEX idx_email_name ON users (email, name);
 SELECT name FROM users WHERE email = 'chul@chul.com';
 ```
 
----
-
-## Binary Log (Binlog)
+### Binary Log (Binlog)
 
 MySQL의 모든 변경 사항을 기록하는 로그다. 복제와 장애 복구의 핵심이다.
 
@@ -191,7 +193,7 @@ INSERT, UPDATE, DELETE 발생
 → Replica가 Binlog를 읽어서 동일하게 실행
 ```
 
-### Binlog 형식
+#### Binlog 형식
 
 | 형식 | 기록 방식 | 특징 |
 |---|---|---|
@@ -201,11 +203,9 @@ INSERT, UPDATE, DELETE 발생
 
 실무에서는 **ROW** 포맷을 주로 사용한다.
 
----
+### 복제 생태계
 
-## 복제 생태계
-
-### GTID (Global Transaction ID)
+#### GTID (Global Transaction ID)
 
 MySQL 5.6부터 지원. 각 트랜잭션에 전역 고유 ID를 부여한다.
 
@@ -229,7 +229,7 @@ CHANGE MASTER TO
     MASTER_AUTO_POSITION=1;
 ```
 
-### 복제 토폴로지
+#### 복제 토폴로지
 
 **Single Primary**
 ```
@@ -245,7 +245,7 @@ Primary 2 ─┼→ Replica (여러 샤드 데이터를 분석 DB로 집계)
 Primary 3 ─┘
 ```
 
-### Group Replication / InnoDB Cluster
+#### Group Replication / InnoDB Cluster
 
 MySQL 8.0부터 Paxos 기반 자동 Failover를 내장 지원한다.
 
@@ -259,7 +259,7 @@ flowchart LR
 
 과반수 동의로 새 Primary를 자동 선출한다. Split-Brain을 방지한다.
 
-### ProxySQL
+#### ProxySQL
 
 MySQL 생태계에서 가장 많이 쓰는 미들웨어다.
 
@@ -277,15 +277,13 @@ MySQL 생태계에서 가장 많이 쓰는 미들웨어다.
 → Failover 자동 처리
 ```
 
----
+### 운영 특징
 
-## 운영 특징
-
-### VACUUM 없음
+#### VACUUM 없음
 
 InnoDB의 Undo Log 방식 덕분에 Dead Tuple이 테이블 안에 쌓이지 않는다. PostgreSQL처럼 VACUUM 관련 모니터링이 필요 없다.
 
-### 커넥션 — 스레드 기반
+#### 커넥션 — 스레드 기반
 
 ```
 PostgreSQL → 커넥션 1개 = 프로세스 1개 (무거움)
@@ -294,7 +292,7 @@ MySQL      → 커넥션 1개 = 스레드 1개  (가벼움)
 
 PostgreSQL은 PgBouncer 없이 운영하면 커넥션 폭발 위험이 있다. MySQL은 상대적으로 부담이 적다.
 
-### 운영의 함정
+#### 운영의 함정
 
 ```
 Long Transaction  → Undo Log 폭발, ibdata 파일 증가
@@ -303,7 +301,7 @@ Character Set     → utf8 vs utf8mb4 혼란 (이모지는 utf8mb4 필수)
 대용량 DDL        → ALTER TABLE이 느림 (Online DDL 지원하지만 제약 있음)
 ```
 
-### 주요 설정
+#### 주요 설정
 
 ```ini
 # my.cnf
@@ -315,11 +313,28 @@ gtid_mode = ON                     # GTID 활성화
 character-set-server = utf8mb4     # 이모지 지원
 ```
 
----
+## 트레이드오프
 
-## 참고 자료
+해당 없음 — MySQL과 PostgreSQL 간 트레이드오프는 [mysql-postgresql-비교](mysql-postgresql-비교.md) 참고.
+
+## 실무 경험
+
+해당 없음
+
+## 참고
+
+원본 학습 노트(TIL)에서 이전한 링크. 확인일 미기재 — 필요 시 재검증.
 
 - [MySQL 공식 문서](https://dev.mysql.com/doc/)
 - [InnoDB 스토리지 엔진](https://dev.mysql.com/doc/refman/8.0/en/innodb-storage-engine.html)
 - [MySQL Group Replication](https://dev.mysql.com/doc/refman/8.0/en/group-replication.html)
 - [ProxySQL 공식 문서](https://proxysql.com/documentation/)
+
+## 관련 내용
+
+- [postgresql](postgresql.md)
+- [mysql-postgresql-비교](mysql-postgresql-비교.md)
+- [복제](복제.md)
+- [샤딩](샤딩.md)
+- [트랜잭션-관리](트랜잭션-관리.md)
+- [커넥션-관리](커넥션-관리.md)

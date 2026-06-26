@@ -4,6 +4,8 @@
 
 `TIL`이 공부한 내용을 빠르게 적재하는 곳이라면, 이곳은 나중에 다시 읽고 다른 사람도 이해할 수 있게 다듬은 지식 문서입니다.
 
+전체 노트를 도메인별로 한눈에 보려면 [INDEX.md](./INDEX.md)를 참고하세요.
+
 ## 폴더 지도
 
 - [Java](./Java/README.md)
@@ -15,6 +17,7 @@
 - [Spring Security](./Spring%20Security/README.md)
 - [Spring AOP](./Spring%20AOP/README.md)
 - [WebSocket](./WebSocket/README.md)
+- [Spring WebFlux 노트](./Spring%20WebFlux%20노트/README.md)
 
 ## 자료구조 / 알고리즘
 
@@ -170,6 +173,4 @@ Java와 Spring 기반 개발에서 반복적으로 등장하는 핵심 도구와
 
 - `TIL` 원문은 남긴다.
 - `wiki`는 대표 문서만 올린다.
-- 실험성 문서는 정리 후 대표 문서에 병합하거나 제거한다.
-- 중복 문서는 삭제보다 병합을 우선한다.
-- 공식 문서나 실제 자료를 참고한 경우 문서 마지막에 `참고자료`를 둔다.
+- 실험성 문서는 정리 후 대표
