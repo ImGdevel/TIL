@@ -159,4 +159,43 @@
 - [Overloading-vs-Overriding](./객체지향/Overloading-vs-Overriding.md)
 - [Dynamic-Binding](./객체지향/Dynamic-Binding.md)
 - [Virtual-Destructor](./객체지향/Virtual-Destructor.md)
-- [Composition-over-Inheritance](./객체지향/Composition-over-In
+- [Composition-over-Inheritance](./객체지향/Composition-over-Inheritance.md)
+- [SOLID](./객체지향/SOLID.md)
+- [Dependency-Injection](./객체지향/Dependency-Injection.md)
+- [Association-Aggregation-Composition](./객체지향/Association-Aggregation-Composition.md)
+
+## 소프트웨어 아키텍처·설계 원칙
+
+- [응집도-결합도](./소프트웨어%20아키텍처·설계%20원칙/응집도-결합도.md)
+
+## 아키텍처
+
+- [AI-Chat-MVC-vs-WebFlux-선택](./아키텍처/AI-Chat-MVC-vs-WebFlux-선택.md)
+- [이벤트-드리븐-아키텍처](./아키텍처/이벤트-드리븐-아키텍처.md)
+
+## 자료구조
+
+- [배열-vs-리스트](./자료구조/배열-vs-리스트.md)
+- [스택-큐](./자료구조/스택-큐.md)
+- [트리-트라이](./자료구조/트리-트라이.md)
+- [이진-탐색-트리](./자료구조/이진-탐색-트리.md)
+- [힙](./자료구조/힙.md)
+- [해시](./자료구조/해시.md)
+
+## 알고리즘
+
+- [머지-정렬](./알고리즘/머지-정렬.md)
+- [퀵-정렬](./알고리즘/퀵-정렬.md)
+
+## Infra
+
+- [Docker](./Infra/Docker.md)
+
+## Sessions (학습 세션 원본)
+
+- [2026-06-23 JVM 런타임 데이터 영역](./sessions/2026-06-23_jvm-runtime-data-areas.md)
+- 그 외 마이그레이션 작업 세션은 별도 세션 노트 없음 — 기존 TIL 내용을 템플릿 형식으로 옮긴 작업이라 신규 학습 대화가 아니었기 때문. 목록은 [INDEX.md](./INDEX.md)의 Sessions 표 참고.
+
+## Submodule
+
+- `Kafka/`, `Elasticsearch/`, `Spring Webflux/`는 별도 저장소를 가리키는 git submodule이다. 내부 내용은 이 저장소에서 직접 수정하지 않는다.
