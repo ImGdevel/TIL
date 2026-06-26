@@ -1,176 +1,170 @@
-# 공부 위키
+# 학습 노트 모음 (TIL)
 
-이 위키는 `TIL`에 러프하게 쌓인 학습 기록을 다시 정리해 둔 문서 공간입니다.
+매일 공부한 내용을 도메인별로 정리해 쌓아두는 저장소입니다. 전체 노트를 표로 한눈에 보려면 [INDEX.md](./INDEX.md)를 참고하세요.
 
-`TIL`이 공부한 내용을 빠르게 적재하는 곳이라면, 이곳은 나중에 다시 읽고 다른 사람도 이해할 수 있게 다듬은 지식 문서입니다.
+## 구성
 
-전체 노트를 도메인별로 한눈에 보려면 [INDEX.md](./INDEX.md)를 참고하세요.
+- `sessions/`: 날짜별 학습 세션 원본 — 그날 다룬 질문, 결론, 근거를 그대로 남긴다.
+- 각 도메인 폴더: 세션에서 확정된 개념/결론만 승격해 정리한 노트.
+- 기록 규칙은 [CLAUDE.md](./CLAUDE.md), 작성 컨벤션은 [CONTRIBUTING.md](./CONTRIBUTING.md) 참고.
 
-## 폴더 지도
+## Java
 
-- [Java](./Java/README.md)
-- [자바스크립트](./자바스크립트/README.md)
-- [아키텍처](./아키텍처/README.md)
-- [비동기](./비동기/README.md)
-- [JPA](./JPA/README.md)
-- [Redis](./Redis/README.md)
-- [Spring Security](./Spring%20Security/README.md)
-- [Spring AOP](./Spring%20AOP/README.md)
-- [WebSocket](./WebSocket/README.md)
-- [Spring WebFlux 노트](./Spring%20WebFlux%20노트/README.md)
+- [런타임-데이터-영역](./Java/런타임-데이터-영역.md)
+- [Jackson-JSON-처리](./Java/Jackson-JSON-처리.md)
+- [Jackson-문제와-해결](./Java/Jackson-문제와-해결.md)
 
-## 자료구조 / 알고리즘
+## Database
 
-- [자료구조](./자료구조/README.md)
-- [알고리즘](./알고리즘/README.md)
-- [운영체제](./운영체제/README.md)
-- [네트워크](./네트워크/README.md)
-- [객체지향](./객체지향/README.md)
-
-<br />
-<br />
-
----
-
-## 빠른 진입점
-
-| 보고 싶은 내용 | 먼저 볼 문서 |
-| --- | --- |
-| Spring Security의 전체 요청 흐름 | [Servlet 아키텍처](https://github.com/ImGdevel/TIL/wiki/spring-security-servlet-architecture) |
-| 인증과 인가의 차이 | [인증 아키텍처](https://github.com/ImGdevel/TIL/wiki/spring-security-authentication-architecture), [인가 구조](https://github.com/ImGdevel/TIL/wiki/spring-security-authorization) |
-| Redis, Stream, Kafka 비교 | [메시징 패턴: MQ, Pub/Sub, Stream, Kafka](https://github.com/ImGdevel/TIL/wiki/messaging-patterns-pubsub-stream-kafka) |
-| JPA 조회 최적화 | [Fetch Join, EntityGraph, Batch Size](https://github.com/ImGdevel/TIL/wiki/fetch-join-vs-entitygraph-vs-batch-size), [Projection과 In-memory Join](https://github.com/ImGdevel/TIL/wiki/projection-vs-in-memory-join) |
-| 비동기와 실시간 통신 | [비동기 전략과 쓰레드 풀 관리](https://github.com/ImGdevel/TIL/wiki/async-strategy-and-thread-pool-management), [WebSocket과 SSE](https://github.com/ImGdevel/TIL/wiki/websocket-and-sse) |
-| 설계 판단과 트레이드오프 | [CQRS](https://github.com/ImGdevel/TIL/wiki/cqrs), [Facade Service](https://github.com/ImGdevel/TIL/wiki/facade-service), [이벤트 드리븐 아키텍처](https://github.com/ImGdevel/TIL/wiki/event-driven-architecture) |
-
-<br />
-
----
-
-## 문서 지도
-
-## Spring Security
-
-Spring Security의 Servlet 기반 구조, 인증/인가 흐름, 필터 체인, CORS/CSRF, 커스텀 필터 배치를 정리합니다.
-
-- [Servlet 아키텍처](https://github.com/ImGdevel/TIL/wiki/spring-security-servlet-architecture)
-- [인증 아키텍처](https://github.com/ImGdevel/TIL/wiki/spring-security-authentication-architecture)
-- [인가 구조](https://github.com/ImGdevel/TIL/wiki/spring-security-authorization)
-- [Filter Chain 예외 처리](https://github.com/ImGdevel/TIL/wiki/spring-security-filter-chain-exception-handling)
-- [CORS](https://github.com/ImGdevel/TIL/wiki/spring-security-cors)
-- [CORS 원인 추적](https://github.com/ImGdevel/TIL/wiki/spring-security-cors-troubleshooting)
-- [CSRF](https://github.com/ImGdevel/TIL/wiki/spring-security-csrf)
-- [커스텀 필터 설계](https://github.com/ImGdevel/TIL/wiki/spring-security-custom-filter-design)
-- [필터 베이스 클래스 선택](https://github.com/ImGdevel/TIL/wiki/spring-filter-base-classes)
-- [Filter와 HandlerInterceptor](https://github.com/ImGdevel/TIL/wiki/spring-security-filter-vs-handlerinterceptor)
-- [JWT 필터 배치](https://github.com/ImGdevel/TIL/wiki/spring-security-jwt-filter-positioning)
-- [hasRole vs hasAuthority](https://github.com/ImGdevel/TIL/wiki/spring-security-hasrole-vs-hasauthority)
-
-<br />
-
----
-
-## Redis / 메시징
-
-Redis의 캐싱과 분산 도구, Pub/Sub과 Stream, Kafka의 파티션/오프셋/재처리 전략을 함께 정리합니다.
-
-- [Redis 개요와 캐싱](https://github.com/ImGdevel/TIL/wiki/redis-overview-and-caching)
-- [Redisson](https://github.com/ImGdevel/TIL/wiki/redisson)
-- [메시징 패턴: MQ, Pub/Sub, Stream, Kafka](https://github.com/ImGdevel/TIL/wiki/messaging-patterns-pubsub-stream-kafka)
-- [Kafka offset, retry, DLT](https://github.com/ImGdevel/TIL/wiki/kafka-offset-commit-retry-dlt)
-- [Kafka key, partition, ordering](https://github.com/ImGdevel/TIL/wiki/kafka-key-based-partitioning-and-ordering)
-- [Kafka log compaction](https://github.com/ImGdevel/TIL/wiki/kafka-log-compaction)
-- [로컬 캐시와 Caffeine](https://github.com/ImGdevel/TIL/wiki/local-cache-with-caffeine)
-
-<br />
-
----
-
-## JPA / 저장소 / 데이터
-
-JPA 매핑, 조회 전략, QueryDSL, DB 인덱스와 실행 계획, MySQL/PostgreSQL 차이를 정리합니다.
-
-- [엔티티와 매핑 설계](https://github.com/ImGdevel/TIL/wiki/jpa-entity-and-mapping-design)
-- [조회와 캐시 전략](https://github.com/ImGdevel/TIL/wiki/jpa-query-and-cache-strategies)
-- [QueryDSL](https://github.com/ImGdevel/TIL/wiki/querydsl)
-- [Projection과 In-memory Join](https://github.com/ImGdevel/TIL/wiki/projection-vs-in-memory-join)
-- [Fetch Join, EntityGraph, Batch Size](https://github.com/ImGdevel/TIL/wiki/fetch-join-vs-entitygraph-vs-batch-size)
-- [인덱스 설계와 실행 계획](https://github.com/ImGdevel/TIL/wiki/database-indexes)
-- [MySQL과 PostgreSQL](https://github.com/ImGdevel/TIL/wiki/mysql-vs-postgresql)
-- [DB 커넥션과 트랜잭션 관리](https://github.com/ImGdevel/TIL/wiki/database-connection-and-transaction-management)
-- [JPA 트랜잭션 고급 전략](./JPA/Transaction-Advanced/README.md)
-
-<br />
-
----
-
-## 자바스크립트 / 비동기
-
-자바스크립트 비동기 모델과 서버 관점의 비동기 처리, WebSocket/SSE 같은 실시간 통신 전략을 정리합니다.
-
-- [함수 선언과 this](https://github.com/ImGdevel/TIL/wiki/javascript-function-declarations-and-this)
-- [비동기 기초](https://github.com/ImGdevel/TIL/wiki/javascript-async-fundamentals)
-- [Promise](https://github.com/ImGdevel/TIL/wiki/javascript-promise)
-- [이벤트 루프](https://github.com/ImGdevel/TIL/wiki/javascript-event-loop)
-- [비동기 전략과 쓰레드 풀 관리](https://github.com/ImGdevel/TIL/wiki/async-strategy-and-thread-pool-management)
-- [WebSocket과 SSE](https://github.com/ImGdevel/TIL/wiki/websocket-and-sse)
-
-<br />
-
----
+- [mysql](./Database/mysql.md)
+- [postgresql](./Database/postgresql.md)
+- [mysql-postgresql-비교](./Database/mysql-postgresql-비교.md)
+- [nosql-개요](./Database/nosql-개요.md)
+- [nosql-데이터-모델링](./Database/nosql-데이터-모델링.md)
+- [nosql-도큐먼트-db](./Database/nosql-도큐먼트-db.md)
+- [nosql-그래프-db](./Database/nosql-그래프-db.md)
+- [nosql-와이드컬럼](./Database/nosql-와이드컬럼.md)
+- [nosql-인덱스](./Database/nosql-인덱스.md)
+- [nosql-ttl](./Database/nosql-ttl.md)
+- [nosql-트랜잭션](./Database/nosql-트랜잭션.md)
+- [분산-id-생성](./Database/분산-id-생성.md)
+- [커넥션-관리](./Database/커넥션-관리.md)
+- [트랜잭션-관리](./Database/트랜잭션-관리.md)
+- [샤딩](./Database/샤딩.md)
+- [복제](./Database/복제.md)
 
 ## 네트워크
 
-브라우저 요청 흐름, HTTPS, WAF, 방화벽, 프록시처럼 애플리케이션 바깥의 네트워크 경계를 정리합니다.
+- [CORS](./네트워크/CORS.md)
+- [CSRF](./네트워크/CSRF.md)
+- [쿠키-세션-JWT](./네트워크/쿠키-세션-JWT.md)
+- [DNS](./네트워크/DNS.md)
+- [흐름제어-혼잡제어-비교](./네트워크/흐름제어-혼잡제어-비교.md)
+- [HTTP-요청-응답](./네트워크/HTTP-요청-응답.md)
+- [HTTP-무상태성](./네트워크/HTTP-무상태성.md)
+- [http1.1-http2-keepalive-비교](./네트워크/http1.1-http2-keepalive-비교.md)
+- [멱등성](./네트워크/멱등성.md)
+- [OSI-TCPIP-계층](./네트워크/OSI-TCPIP-계층.md)
+- [REST](./네트워크/REST.md)
+- [리버스-프록시](./네트워크/리버스-프록시.md)
+- [TCP-3-way-핸드셰이크](./네트워크/TCP-3-way-핸드셰이크.md)
+- [TCP-4-way-종료](./네트워크/TCP-4-way-종료.md)
+- [TCP-신뢰성-메커니즘](./네트워크/TCP-신뢰성-메커니즘.md)
+- [TCP-UDP-비교](./네트워크/TCP-UDP-비교.md)
+- [TIME-WAIT](./네트워크/TIME-WAIT.md)
+- [TLS-핸드셰이크](./네트워크/TLS-핸드셰이크.md)
+- [UDP-최신성](./네트워크/UDP-최신성.md)
+- [WAS](./네트워크/WAS.md)
+- [웹-요청-흐름](./네트워크/웹-요청-흐름.md)
 
-- [웹 요청 흐름과 HTTPS](https://github.com/ImGdevel/TIL/wiki/web-request-flow-and-https)
-- [WAF, 방화벽, 프록시](https://github.com/ImGdevel/TIL/wiki/waf-firewall-and-proxy)
+## JPA
 
-<br />
+- [엔티티-매핑-전략-비교](./JPA/엔티티-매핑-전략-비교.md)
+- [일대다-관계-설계-전략](./JPA/일대다-관계-설계-전략.md)
+- [엔티티-설계-컨벤션](./JPA/엔티티-설계-컨벤션.md)
+- [JPA-조회-성능-최적화](./JPA/JPA-조회-성능-최적화.md)
 
----
+### JPA/Transaction-Advanced
 
-## 아키텍처
+- [트랜잭션-경계와-전파](./JPA/Transaction-Advanced/트랜잭션-경계와-전파.md)
+- [동시성-제어와-락-전략](./JPA/Transaction-Advanced/동시성-제어와-락-전략.md)
+- [외부시스템-트랜잭션-일관성](./JPA/Transaction-Advanced/외부시스템-트랜잭션-일관성.md)
+- [조회-트랜잭션-flush-Lazy-Loading](./JPA/Transaction-Advanced/조회-트랜잭션-flush-Lazy-Loading.md)
+- [배치-데드락-긴-트랜잭션](./JPA/Transaction-Advanced/배치-데드락-긴-트랜잭션.md)
+- [Transactional-실무-함정](./JPA/Transaction-Advanced/Transactional-실무-함정.md)
+- [트랜잭션-안티패턴-체크리스트](./JPA/Transaction-Advanced/트랜잭션-안티패턴-체크리스트.md)
 
-애플리케이션 구조와 트레이드오프를 다룹니다. 특정 기술보다 설계 판단의 기준을 정리하는 영역입니다.
+## Spring Security
 
-- [AI Chat에서 MVC와 WebFlux 선택](https://github.com/ImGdevel/TIL/wiki/ai-chat-mvc-vs-webflux)
-- [이벤트 드리븐 아키텍처](https://github.com/ImGdevel/TIL/wiki/event-driven-architecture)
-- [CQRS](https://github.com/ImGdevel/TIL/wiki/cqrs)
-- [Facade Service](https://github.com/ImGdevel/TIL/wiki/facade-service)
-- [ASP.NET Core vs Spring 선택 기준](https://github.com/ImGdevel/TIL/wiki/aspnet-core-vs-spring-selection-criteria)
-- [응집도와 결합도](https://github.com/ImGdevel/TIL/wiki/software-design-cohesion-and-coupling)
+- [Spring-Security-CORS-설정](./Spring%20Security/Spring-Security-CORS-설정.md)
+- [CORS-문제-필터체인-디버깅](./Spring%20Security/CORS-문제-필터체인-디버깅.md)
+- [CSRF-공격과-방어-전략](./Spring%20Security/CSRF-공격과-방어-전략.md)
+- [GenericFilterBean-vs-OncePerRequestFilter](./Spring%20Security/GenericFilterBean-vs-OncePerRequestFilter.md)
+- [Spring-Security-Filter-Chain-예외-처리-전략](./Spring%20Security/Spring-Security-Filter-Chain-예외-처리-전략.md)
+- [Spring-Security-아키텍처-이해하기](./Spring%20Security/Spring-Security-아키텍처-이해하기.md)
+- [Spring-Security-인증-아키텍처-이해하기](./Spring%20Security/Spring-Security-인증-아키텍처-이해하기.md)
+- [Spring-Security-필터-체인](./Spring%20Security/Spring-Security-필터-체인.md)
 
-<br />
+## Spring AOP
 
----
+- [Spring-AOP-Pointcut-Advice-Advisor](./Spring%20AOP/Spring-AOP-Pointcut-Advice-Advisor.md)
 
-## 인프라 / 빌드
+## Spring MVC
 
-테스트 전략, Docker, Gradle처럼 개발 결과물이 검증되고 실행 환경으로 전달되는 과정을 정리합니다.
+- [MVC-vs-Webflux-비교](./Spring%20MVC/MVC-vs-Webflux-비교.md)
 
-- [테스트 전략과 테스트 피라미드](https://github.com/ImGdevel/TIL/wiki/testing-strategy-and-test-pyramid)
-- [Docker 기초](https://github.com/ImGdevel/TIL/wiki/docker-basics-images-containers-volumes)
-- [Gradle 의존성 설정](https://github.com/ImGdevel/TIL/wiki/gradle-dependency-configurations)
+## Spring WebFlux 노트
 
-<br />
+- [Reactive-Streams-핵심-원리](./Spring%20WebFlux%20노트/Reactive-Streams-핵심-원리.md)
+- [Reactor-Mono-Flux-개요](./Spring%20WebFlux%20노트/Reactor-Mono-Flux-개요.md)
+- [Reactor-Subscribe-Buffer-Take](./Spring%20WebFlux%20노트/Reactor-Subscribe-Buffer-Take.md)
+- [Reactor-백프레셔](./Spring%20WebFlux%20노트/Reactor-백프레셔.md)
+- [Reactor-Context](./Spring%20WebFlux%20노트/Reactor-Context.md)
+- [Reactor-Context-실습](./Spring%20WebFlux%20노트/Reactor-Context-실습.md)
+- [Reactor-에러처리](./Spring%20WebFlux%20노트/Reactor-에러처리.md)
+- [Reactor-스케줄러](./Spring%20WebFlux%20노트/Reactor-스케줄러.md)
+- [Reactor-스케줄러-실습](./Spring%20WebFlux%20노트/Reactor-스케줄러-실습.md)
+- [WebFlux-기초](./Spring%20WebFlux%20노트/WebFlux-기초.md)
+- [WebFlux-개요](./Spring%20WebFlux%20노트/WebFlux-개요.md)
+- [WebFlux-개요-심화](./Spring%20WebFlux%20노트/WebFlux-개요-심화.md)
+- [WebFlux-엔드포인트-구성](./Spring%20WebFlux%20노트/WebFlux-엔드포인트-구성.md)
+- [WebFlux-실습-예제](./Spring%20WebFlux%20노트/WebFlux-실습-예제.md)
+- [WebFlux-요청-응답-인터페이스](./Spring%20WebFlux%20노트/WebFlux-요청-응답-인터페이스.md)
 
----
+## Redis
 
-## Java / Spring Core
+- [Redis-SortedSet-Ranking](./Redis/Redis-SortedSet-Ranking.md)
+- [Redis-Stream에서-Kafka로-전환하기](./Redis/Redis-Stream에서-Kafka로-전환하기.md)
+- [redis-data-structures](./Redis/redis-data-structures.md)
 
-Java와 Spring 기반 개발에서 반복적으로 등장하는 핵심 도구와 개념을 정리합니다.
+## WebSocket
 
-- [Jackson과 JSON 처리](https://github.com/ImGdevel/TIL/wiki/jackson-json-processing)
-- [Spring AOP 핵심 개념](https://github.com/ImGdevel/TIL/wiki/spring-aop-pointcut-advice-advisor)
+- [WebSocket](./WebSocket/WebSocket.md)
+- [SSE-vs-WebSocket](./WebSocket/SSE-vs-WebSocket.md)
+- [WebSocket과-SSE](./WebSocket/WebSocket과-SSE.md)
 
-<br />
-<br />
+## 자바스크립트
 
----
+- [JS-함수-선언](./자바스크립트/JS-함수-선언.md)
+- [Promise](./자바스크립트/Promise.md)
+- [블로킹-논블로킹과-동기-비동기](./자바스크립트/블로킹-논블로킹과-동기-비동기.md)
+- [Event-Loop와-비동기-처리](./자바스크립트/Event-Loop와-비동기-처리.md)
+- [이벤트-루프와-비동기-처리](./자바스크립트/이벤트-루프와-비동기-처리.md)
 
-## 기준
+## 비동기
 
-- `TIL` 원문은 남긴다.
-- `wiki`는 대표 문서만 올린다.
-- 실험성 문서는 정리 후 대표
+- [비동기-전략](./비동기/비동기-전략.md)
+- [쓰레드-풀-관리-전략](./비동기/쓰레드-풀-관리-전략.md)
+
+## 브라우저
+
+- [브라우저-렌더링](./브라우저/브라우저-렌더링.md)
+
+## 운영체제
+
+- [Process-vs-Thread](./운영체제/Process-vs-Thread.md)
+- [Concurrency-vs-Parallelism](./운영체제/Concurrency-vs-Parallelism.md)
+- [Coroutine](./운영체제/Coroutine.md)
+- [UserMode-KernelMode](./운영체제/UserMode-KernelMode.md)
+- [SystemCall](./운영체제/SystemCall.md)
+- [Blocking-Nonblocking-Sync-Async](./운영체제/Blocking-Nonblocking-Sync-Async.md)
+- [RaceCondition-DataRace-CriticalSection](./운영체제/RaceCondition-DataRace-CriticalSection.md)
+- [Atomic](./운영체제/Atomic.md)
+- [MemoryLeak-DanglingPointer](./운영체제/MemoryLeak-DanglingPointer.md)
+- [Context-Switching](./운영체제/Context-Switching.md)
+- [Mutex-Semaphore](./운영체제/Mutex-Semaphore.md)
+- [Deadlock-Conditions](./운영체제/Deadlock-Conditions.md)
+
+## 서킷 브레이커
+
+- [Bulkhead](./서킷%20브레이커/Bulkhead.md)
+- [분산-환경-서킷-브레이커](./서킷%20브레이커/분산-환경-서킷-브레이커.md)
+- [서킷-브레이커-Resilience4j](./서킷%20브레이커/서킷-브레이커-Resilience4j.md)
+
+## 객체지향
+
+- [OOP-4-Features](./객체지향/OOP-4-Features.md)
+- [Overloading-vs-Overriding](./객체지향/Overloading-vs-Overriding.md)
+- [Dynamic-Binding](./객체지향/Dynamic-Binding.md)
+- [Virtual-Destructor](./객체지향/Virtual-Destructor.md)
+- [Composition-over-Inheritance](./객체지향/Composition-over-In
