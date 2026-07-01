@@ -190,12 +190,3 @@
 ## Infra
 
 - [Docker](./Infra/Docker.md)
-
-## Sessions (학습 세션 원본)
-
-- [2026-06-23 JVM 런타임 데이터 영역](./sessions/2026-06-23_jvm-runtime-data-areas.md)
-- 그 외 마이그레이션 작업 세션은 별도 세션 노트 없음 — 기존 TIL 내용을 템플릿 형식으로 옮긴 작업이라 신규 학습 대화가 아니었기 때문. 목록은 [INDEX.md](./INDEX.md)의 Sessions 표 참고.
-
-## Submodule
-
-- `Kafka/`, `Elasticsearch/`, `Spring Webflux/`는 별도 저장소를 가리키는 git submodule이다. 내부 내용은 이 저장소에서 직접 수정하지 않는다.
